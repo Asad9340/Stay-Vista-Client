@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import AddRoomForm from '../../../components/Dashboard/AddRoomForm/AddRoomForm';
-import axios from 'axios';
+import { imgbbImageUpload } from '../../../api/utils/imageUpload';
+import useAuth from '../../../hooks/useAuth';
 
 function AddRoom() {
+  const { user } = useAuth();
+  const [file, setFile] = useState('');
+
+  const handleChange = e => {
+    setFile(URL.createObjectURL(e.target.files[0]));
+  };
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -23,15 +30,25 @@ function AddRoom() {
     const bathrooms = form.bathrooms.value;
     const description = form.description.value;
     // Upload image to your server using FormData
-    const formData = new FormData();
-    formData.append('image', image);
-    const { data } = await axios.post(
-      `https://api.imgbb.com/1/upload?key=${
-        import.meta.env.VITE_IMGBB_API_KEY
-      }`,
-      formData
-    );
-    const imageUrl = data.data.display_url;
+    const imageUrl = await imgbbImageUpload(image);
+
+    const roomData = {
+      location,
+      category,
+      title,
+      image: imageUrl,
+      price,
+      total_guest,
+      bedrooms,
+      bathrooms,
+      description,
+      host: {
+        name: user.displayName,
+        email: user.email,
+        image: user.photoURL,
+      },
+    };
+    console.log(roomData);
   };
   return (
     <div>
@@ -39,6 +56,8 @@ function AddRoom() {
         state={state}
         setState={setState}
         handleAddRoom={handleAddRoom}
+        handleChange={handleChange}
+        file={file}
       />
     </div>
   );

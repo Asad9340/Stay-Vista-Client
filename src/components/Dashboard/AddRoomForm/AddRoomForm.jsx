@@ -2,7 +2,13 @@ import { DateRange } from 'react-date-range';
 import { categories } from './../../Categories/CategoriesData';
 
 // eslint-disable-next-line react/prop-types
-const AddRoomForm = ({ state, setState, handleAddRoom,img }) => {
+const AddRoomForm = ({
+  state,
+  setState,
+  handleAddRoom,
+  handleChange,
+  file,
+}) => {
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
       <form onSubmit={handleAddRoom}>
@@ -69,7 +75,7 @@ const AddRoomForm = ({ state, setState, handleAddRoom,img }) => {
 
             <div className=" p-4 bg-white w-full  m-auto rounded-lg">
               <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
-                <div className="flex flex-col w-max mx-auto text-center">
+                <div className="flex justify-between items-center w-max mx-auto text-center">
                   <label>
                     <input
                       className="text-sm cursor-pointer w-36 hidden"
@@ -78,12 +84,23 @@ const AddRoomForm = ({ state, setState, handleAddRoom,img }) => {
                       id="image"
                       accept="image/*"
                       hidden
+                      onChange={handleChange}
                     />
                     <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
                       Upload Image
                     </div>
-                    <img src={img} alt="" />
                   </label>
+                  <div>
+                    {file && (
+                      <div className='pl-10'>
+                        <img
+                          className="w-12 h-12 object-contain object-center"
+                          src={file}
+                          alt=""
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
