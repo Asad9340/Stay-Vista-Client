@@ -7,6 +7,7 @@ import { ImSpinner3 } from 'react-icons/im';
 import { useState } from 'react';
 import { IoMdEye } from 'react-icons/io';
 import { IoIosEyeOff } from 'react-icons/io';
+import { imgbbImageUpload } from '../../api/utils/imageUpload';
 const SignUp = () => {
   const {
     createUser,
@@ -67,18 +68,10 @@ const SignUp = () => {
     } else {
       setErrorPass('');
     }
-
-    const formData = new FormData();
-    formData.append('image', image);
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${
-          import.meta.env.VITE_IMGBB_API_KEY
-        }`,
-        formData
-      );
-      const imageUrl = data.data.display_url;
+      const imageUrl =await imgbbImageUpload(image);
+
       if (imageUrl) {
         await createUser(email, password);
         await updateUserProfile(name, imageUrl);
