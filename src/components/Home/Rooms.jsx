@@ -2,17 +2,17 @@ import Card from './Card';
 import Container from '../Shared/Container';
 import Heading from '../Shared/Heading';
 import LoadingSpinner from '../Shared/LoadingSpinner';
-// import useAxiosCommon from '../../hooks/useAxiosCommon';
+import useAxiosCommon from '../../hooks/useAxiosCommon';
 import { useQuery } from '@tanstack/react-query';
 
 const Rooms = () => {
-  // const axiosCommon = useAxiosCommon();
+  const axiosCommon = useAxiosCommon();
   const { data: rooms = [], isLoading } = useQuery({
     queryKey: ['rooms'],
-    queryFn: () =>
-      fetch('http://localhost:8000/rooms').then(res =>
-        res.json()
-      ),
+    queryFn: async () => {
+      const { data } = await axiosCommon.get('/rooms');
+      return data;
+    }
   });
 
   if (isLoading) return <LoadingSpinner />;
