@@ -8,7 +8,13 @@ import { useState } from 'react';
 import { IoMdEye } from 'react-icons/io';
 import { IoIosEyeOff } from 'react-icons/io';
 const SignUp = () => {
-  const { createUser, updateUserProfile, loading, setLoading } = useAuth();
+  const {
+    createUser,
+    updateUserProfile,
+    loading,
+    setLoading,
+    signInWithGoogle,
+  } = useAuth();
   const [errorName, setErrorName] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPass, setErrorPass] = useState('');
@@ -37,6 +43,8 @@ const SignUp = () => {
       setImageError('');
       setImageError('Image must be specified');
       return;
+    } else {
+      setImageError('')
     }
     if (email.length <= 0) {
       setErrorEmail('');
@@ -85,6 +93,10 @@ const SignUp = () => {
   };
   const handelEyeClick = () => {
     setEyeIcon(!eyeIcon);
+  };
+  const onGoogleClickHandle =async () => {
+    await signInWithGoogle();
+    navigate('/');
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -151,7 +163,7 @@ const SignUp = () => {
                 </label>
               </div>
               <input
-                type={!eyeIcon?'password':'text'}
+                type={!eyeIcon ? 'password' : 'text'}
                 name="password"
                 autoComplete="new-password"
                 id="password"
@@ -191,11 +203,15 @@ const SignUp = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
+        <button
+          onClick={onGoogleClickHandle}
+          disabled={loading}
+          className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+        >
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
-        </div>
+        </button>
         <p className="px-6 text-sm text-center text-gray-400">
           Already have an account?{' '}
           <Link
