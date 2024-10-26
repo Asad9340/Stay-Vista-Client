@@ -44,7 +44,7 @@ const SignUp = () => {
       setImageError('Image must be specified');
       return;
     } else {
-      setImageError('')
+      setImageError('');
     }
     if (email.length <= 0) {
       setErrorEmail('');
@@ -94,9 +94,15 @@ const SignUp = () => {
   const handelEyeClick = () => {
     setEyeIcon(!eyeIcon);
   };
-  const onGoogleClickHandle =async () => {
-    await signInWithGoogle();
-    navigate('/');
+  const onGoogleClickHandle = async () => {
+    try {
+      await signInWithGoogle();
+      navigate('/');
+      toast.success('Google Sign In Successfully');
+    } catch (e) {
+      toast.error('Failed to sign in with Google');
+      setLoading(false);
+    }
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -172,9 +178,9 @@ const SignUp = () => {
               />
               <p className="absolute right-3 bottom-3">
                 {eyeIcon ? (
-                  <IoMdEye onClick={handelEyeClick} />
+                  <IoMdEye onClick={handelEyeClick} title='Hide Password'/>
                 ) : (
-                  <IoIosEyeOff onClick={handelEyeClick} />
+                  <IoIosEyeOff onClick={handelEyeClick} title='Show Password'/>
                 )}
               </p>
               <br />
