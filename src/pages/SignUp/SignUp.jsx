@@ -5,9 +5,15 @@ import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { ImSpinner3 } from 'react-icons/im';
 import { useState } from 'react';
+import { IoMdEye } from 'react-icons/io';
+import { IoIosEyeOff } from 'react-icons/io';
 const SignUp = () => {
   const { createUser, updateUserProfile, loading, setLoading } = useAuth();
-  const [errorPass, setErrorPass] = useState();
+  const [errorName, setErrorName] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
+  const [errorPass, setErrorPass] = useState('');
+  const [imageError, setImageError] = useState('');
+  const [eyeIcon, setEyeIcon] = useState(false);
   const navigate = useNavigate();
   const handelSignUpRegister = async e => {
     e.preventDefault();
@@ -15,16 +21,47 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const image = form.image.files[0];
+    if (name.length <= 0) {
+      setErrorName('Name is required');
+      return;
+    }
+    if (name.length < 2) {
+      console.log(typeof name);
+      setErrorName('Name must be at least 3 characters');
+      return;
+    } else {
+      setErrorName('');
+    }
+    if (!image) {
+      setImageError('');
+      setImageError('Image must be specified');
+      return;
+    }
+    if (email.length <= 0) {
+      setErrorEmail('');
+      setErrorEmail('Email is Required');
+      return;
+    } else {
+      setErrorEmail('');
+    }
+    if (password.length <= 0) {
+      setErrorPass('Password is required');
+      return;
+    }
     if (password.length < 6) {
       setErrorPass('Password must be at least 6 characters.');
+      return;
     }
     if (password.length > 12) {
       setErrorPass('Password must be less than 12 characters.');
+      return;
+    } else {
+      setErrorPass('');
     }
-    const image = form.image.files[0];
+
     const formData = new FormData();
     formData.append('image', image);
-    console.log(formData);
     try {
       setLoading(true);
       const { data } = await axios.post(
@@ -45,6 +82,9 @@ const SignUp = () => {
     } catch (e) {
       toast.error(e.message);
     }
+  };
+  const handelEyeClick = () => {
+    setEyeIcon(!eyeIcon);
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -72,18 +112,22 @@ const SignUp = () => {
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
+              <br />
+              <p className="text-red-500">{errorName ? errorName : ''}</p>
             </div>
             <div>
               <label htmlFor="image" className="block mb-2 text-sm">
                 Select Image:
               </label>
               <input
-                required
                 type="file"
                 id="image"
                 name="image"
                 accept="image/*"
+                className="w-full text-gray-500 font-medium text-sm file:cursor-pointer cursor-pointer file:border-0 file:py-2 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white px-3 py-1 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200"
               />
+              <br />
+              <p className="text-red-500">{imageError ? imageError : ''}</p>
             </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
@@ -93,27 +137,34 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 id="email"
-                required
                 placeholder="Enter Your Email Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
+              <br />
+              <p className="text-red-500">{errorEmail ? errorEmail : ''}</p>
             </div>
-            <div>
+            <div className="relative">
               <div className="flex justify-between">
                 <label htmlFor="password" className="text-sm mb-2">
                   Password
                 </label>
               </div>
               <input
-                type="password"
+                type={!eyeIcon?'password':'text'}
                 name="password"
                 autoComplete="new-password"
                 id="password"
-                required
                 placeholder="*******"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
               />
+              <p className="absolute right-3 bottom-3">
+                {eyeIcon ? (
+                  <IoMdEye onClick={handelEyeClick} />
+                ) : (
+                  <IoIosEyeOff onClick={handelEyeClick} />
+                )}
+              </p>
               <br />
               <p className="text-red-500">{errorPass ? errorPass : ''}</p>
             </div>
