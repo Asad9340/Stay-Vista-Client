@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../hooks/useAuth';
-import { ImSpinner3 } from 'react-icons/im';
+import { ImSpinner3, ImSpinner9 } from 'react-icons/im';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { IoIosEyeOff, IoMdEye } from 'react-icons/io';
@@ -48,7 +48,8 @@ const Login = () => {
     console.log(email);
     try {
       await resetPassword(email);
-      toast.success('Password reset email sent.');
+      toast.success('Reset mail sent to your Email');
+      setLoading(false);
     } catch (e) {
       toast.error(e.message);
     }
@@ -203,7 +204,11 @@ const Login = () => {
                   type="submit"
                   className="bg-rose-500 w-full rounded-md py-3 text-white"
                 >
-                  Reset Password
+                  {loading ? (
+                    <ImSpinner9 className="animate-spin m-auto" />
+                  ) : (
+                    'Reset Password'
+                  )}
                 </button>
               </div>
             </form>
