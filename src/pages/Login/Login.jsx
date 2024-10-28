@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../hooks/useAuth';
 import { ImSpinner3, ImSpinner9 } from 'react-icons/im';
@@ -10,12 +10,15 @@ const Login = () => {
   const [forgetPass, setForgatePass] = useState(false);
   const navigate = useNavigate();
   const [eyeIcon, setEyeIcon] = useState(false);
+  const location = useLocation();
+  const from=location.state || '/'
+
   const { signInWithGoogle, loading, setLoading, signIn, resetPassword } =
     useAuth();
   const onGoogleClickHandle = async () => {
     try {
       await signInWithGoogle();
-      navigate('/');
+      navigate(from);
       toast.success('Google Sign In Successfully');
     } catch (e) {
       toast.error('Failed to sign in with Google');
@@ -32,7 +35,7 @@ const Login = () => {
     const password = form.password.value;
     try {
       await signIn(email, password);
-      navigate('/');
+      navigate(from);
       toast.success('LogIn Successfully');
     } catch (e) {
       toast.error('Email or password does not match');
@@ -52,6 +55,7 @@ const Login = () => {
       setLoading(false);
     } catch (e) {
       toast.error(e.message);
+      setLoading(false);
     }
   };
   const goToLogin = () => {
@@ -121,7 +125,7 @@ const Login = () => {
                 <button
                   disabled={loading}
                   type="submit"
-                  className="bg-rose-500 w-full rounded-md py-3 text-white"
+                  className="disabled:cursor-not-allowed bg-rose-500 w-full rounded-md py-3 text-white"
                 >
                   {loading ? (
                     <ImSpinner3 className="animate-spin m-auto" />
@@ -149,7 +153,7 @@ const Login = () => {
             <button
               onClick={onGoogleClickHandle}
               disabled={loading}
-              className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+              className="disabled:cursor-not-allowed flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
             >
               <FcGoogle size={32} />
 

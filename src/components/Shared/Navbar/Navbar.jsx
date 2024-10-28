@@ -1,17 +1,19 @@
 import Container from '../Container';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import avatarImg from '../../../assets/images/placeholder.jpg';
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const navigate=useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const handleLogOut = () => {
     logOut();
     toast.success('LogOut Successfully')
+    navigate('/');
   };
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">

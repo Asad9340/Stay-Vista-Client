@@ -178,9 +178,9 @@ const SignUp = () => {
               />
               <p className="absolute right-3 bottom-3">
                 {eyeIcon ? (
-                  <IoMdEye onClick={handelEyeClick} title='Hide Password'/>
+                  <IoMdEye onClick={handelEyeClick} title="Hide Password" />
                 ) : (
-                  <IoIosEyeOff onClick={handelEyeClick} title='Show Password'/>
+                  <IoIosEyeOff onClick={handelEyeClick} title="Show Password" />
                 )}
               </p>
               <br />
@@ -192,7 +192,7 @@ const SignUp = () => {
             <button
               disabled={loading}
               type="submit"
-              className="bg-rose-500 w-full rounded-md py-3 text-white"
+              className="disabled:cursor-not-allowed bg-rose-500 w-full rounded-md py-3 text-white"
             >
               {loading ? (
                 <ImSpinner3 className="animate-spin m-auto" />
@@ -212,7 +212,7 @@ const SignUp = () => {
         <button
           onClick={onGoogleClickHandle}
           disabled={loading}
-          className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+          className="disabled:cursor-not-allowed flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
         >
           <FcGoogle size={32} />
 
