@@ -9,6 +9,8 @@ import { FaHome } from 'react-icons/fa';
 import { MdPermContactCalendar } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
 import { IoLogOut } from 'react-icons/io5';
+import { IoLogIn } from 'react-icons/io5';
+import { MdAccountCircle } from 'react-icons/md';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -84,6 +86,7 @@ const Navbar = () => {
                 <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm">
                   <div className="flex flex-col cursor-pointer">
                     <Link
+                      onClick={() => setIsOpen(!isOpen)}
                       to="/"
                       className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                     >
@@ -92,6 +95,7 @@ const Navbar = () => {
                     </Link>
                     <hr />
                     <Link
+                      onClick={() => setIsOpen(!isOpen)}
                       to="/"
                       className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                     >
@@ -100,6 +104,7 @@ const Navbar = () => {
                     </Link>
                     <hr />
                     <Link
+                      onClick={() => setIsOpen(!isOpen)}
                       to="/"
                       className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                     >
@@ -113,7 +118,10 @@ const Navbar = () => {
                           onClick={handleLogOut}
                           className="block px-4 py-3 hover:bg-neutral-100 transition font-semibold "
                         >
-                          <Link className="flex items-center gap-2">
+                          <Link
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="flex items-center gap-2"
+                          >
                             <IoLogOut />
                             Logout
                           </Link>
@@ -123,14 +131,17 @@ const Navbar = () => {
                       <>
                         <Link
                           to="/login"
-                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                         >
+                          <IoLogIn />
                           Login
                         </Link>
+                        <hr />
                         <Link
                           to="/signup"
-                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                         >
+                          <MdAccountCircle />
                           Sign Up
                         </Link>
                       </>
