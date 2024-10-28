@@ -5,14 +5,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import avatarImg from '../../../assets/images/placeholder.jpg';
 import toast from 'react-hot-toast';
+import { FaHome } from 'react-icons/fa';
+import { MdPermContactCalendar } from 'react-icons/md';
+import { FaUser } from 'react-icons/fa';
+import { IoLogOut } from 'react-icons/io5';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const handleLogOut = () => {
     logOut();
-    toast.success('LogOut Successfully')
+    toast.success('LogOut Successfully');
     navigate('/');
   };
   return (
@@ -30,6 +34,19 @@ const Navbar = () => {
                 height="100"
               />
             </Link>
+            <div className="hidden md:block">
+              <ul className="flex justify-between gap-4 text-lg">
+                <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
+                  <Link>Home</Link>
+                </li>
+                <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
+                  <Link>About Us</Link>
+                </li>
+                <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
+                  <Link>Contact Us</Link>
+                </li>
+              </ul>
+            </div>
             {/* Dropdown Menu */}
             <div className="relative">
               <div className="flex flex-row items-center gap-3">
@@ -68,18 +85,38 @@ const Navbar = () => {
                   <div className="flex flex-col cursor-pointer">
                     <Link
                       to="/"
-                      className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                      className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                     >
+                      <FaHome />
                       Home
                     </Link>
-
+                    <hr />
+                    <Link
+                      to="/"
+                      className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
+                    >
+                      <FaUser />
+                      About Us
+                    </Link>
+                    <hr />
+                    <Link
+                      to="/"
+                      className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
+                    >
+                      <MdPermContactCalendar />
+                      Contact Us
+                    </Link>
+                    <hr />
                     {user ? (
                       <>
                         <div
                           onClick={handleLogOut}
-                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
+                          className="block px-4 py-3 hover:bg-neutral-100 transition font-semibold "
                         >
-                          Logout
+                          <Link className="flex items-center gap-2">
+                            <IoLogOut />
+                            Logout
+                          </Link>
                         </div>
                       </>
                     ) : (
