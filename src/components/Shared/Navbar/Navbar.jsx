@@ -11,6 +11,7 @@ import { FaUser } from 'react-icons/fa';
 import { IoLogOut } from 'react-icons/io5';
 import { IoLogIn } from 'react-icons/io5';
 import { MdAccountCircle } from 'react-icons/md';
+import { TbLayoutDashboardFilled } from 'react-icons/tb';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -85,6 +86,15 @@ const Navbar = () => {
               {isOpen && (
                 <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm">
                   <div className="flex flex-col cursor-pointer">
+                    <Link
+                      onClick={() => setIsOpen(!isOpen)}
+                      to="/dashboard"
+                      className=" px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
+                    >
+                      <TbLayoutDashboardFilled />
+                      Dashboard
+                    </Link>
+                    <hr />
                     <Link
                       onClick={() => setIsOpen(!isOpen)}
                       to="/"
