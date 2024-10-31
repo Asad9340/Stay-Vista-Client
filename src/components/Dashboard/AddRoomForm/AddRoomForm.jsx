@@ -1,18 +1,11 @@
 import { DateRange } from 'react-date-range';
 import { categories } from './../../Categories/CategoriesData';
-import { useState } from 'react';
 
-const AddRoomForm = () => {
-  const [state, setState] = useState([
-    {
-      startDate: new Date(),
-      endDate: null,
-      key: 'selection',
-    },
-  ]);
+// eslint-disable-next-line react/prop-types
+const AddRoomForm = ({ state, setState, handleAddRoom,img }) => {
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
-      <form>
+      <form onSubmit={handleAddRoom}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-6">
             <div className="space-y-1 text-sm">
@@ -89,6 +82,7 @@ const AddRoomForm = () => {
                     <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
                       Upload Image
                     </div>
+                    <img src={img} alt="" />
                   </label>
                 </div>
               </div>
