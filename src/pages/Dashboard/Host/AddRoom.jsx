@@ -3,7 +3,6 @@ import AddRoomForm from '../../../components/Dashboard/AddRoomForm/AddRoomForm';
 import axios from 'axios';
 
 function AddRoom() {
-  const axiosSecure = axiosSecure();
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -33,17 +32,6 @@ function AddRoom() {
       formData
     );
     const imageUrl = data.data.display_url;
-    console.log(
-      location,
-      category,
-      title,
-      imageUrl,
-      price,
-      total_guest,
-      bedrooms,
-      bathrooms,
-      description
-    );
   };
   return (
     <div>
