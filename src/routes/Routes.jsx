@@ -10,6 +10,7 @@ import DashboardLayout from '../layouts/DashboardLayout'
 import Statistics from '../pages/Dashboard/Common/Statistics'
 import AddRoom from './../pages/Dashboard/Host/AddRoom';
 import MyListings from './../pages/Dashboard/Host/MyListings';
+import AboutUs from '../pages/AboutUs/AboutUs'
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/about-us',
+        element:<AboutUs/>
       },
       {
         path: '/room/:id',

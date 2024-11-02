@@ -43,7 +43,7 @@ const Navbar = () => {
                   <Link>Home</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
-                  <Link>About Us</Link>
+                  <Link to='/about-us'>About Us</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
                   <Link>Contact Us</Link>
@@ -106,7 +106,7 @@ const Navbar = () => {
                     <hr />
                     <Link
                       onClick={() => setIsOpen(!isOpen)}
-                      to="/"
+                      to="/about-us"
                       className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                     >
                       <FaUser />
