@@ -155,8 +155,8 @@ function AboutUs() {
 
       <footer className="bg-rose-500 text-white text-center py-8">
         <p>
-          &copy; Copyright [Your Name]. All rights reserved. Created by Binary
-          Boats⛵
+          &copy; Copyright Stay Vista. All rights reserved. Created by Md Asadul
+          Islam
         </p>
       </footer>
     </div>

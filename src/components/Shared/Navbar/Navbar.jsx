@@ -46,7 +46,7 @@ const Navbar = () => {
                   <Link to='/about-us'>About Us</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
-                  <Link>Contact Us</Link>
+                  <Link to="/contact-us">Contact Us</Link>
                 </li>
               </ul>
             </div>
@@ -115,7 +115,7 @@ const Navbar = () => {
                     <hr />
                     <Link
                       onClick={() => setIsOpen(!isOpen)}
-                      to="/"
+                      to="/contact-us"
                       className="sm:block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
                     >
                       <MdPermContactCalendar />

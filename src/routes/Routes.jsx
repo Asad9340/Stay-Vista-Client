@@ -11,6 +11,7 @@ import Statistics from '../pages/Dashboard/Common/Statistics'
 import AddRoom from './../pages/Dashboard/Host/AddRoom';
 import MyListings from './../pages/Dashboard/Host/MyListings';
 import AboutUs from '../pages/AboutUs/AboutUs'
+import ContactUs from '../pages/ContactUs/ContactUs'
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: '/about-us',
         element:<AboutUs/>
+      },
+      {
+        path: '/contact-us',
+        element:<ContactUs/>
       },
       {
         path: '/room/:id',
