@@ -70,7 +70,7 @@ const SignUp = () => {
     }
     try {
       setLoading(true);
-      const imageUrl =await imgbbImageUpload(image);
+      const imageUrl = await imgbbImageUpload(image);
 
       if (imageUrl) {
         await createUser(email, password);
@@ -120,7 +120,7 @@ const SignUp = () => {
                 name="name"
                 id="name"
                 placeholder="Enter Your Name Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
               <br />
@@ -135,7 +135,7 @@ const SignUp = () => {
                 id="image"
                 name="image"
                 accept="image/*"
-                className="w-full text-gray-500 font-medium text-sm file:cursor-pointer cursor-pointer file:border-0 file:py-2 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white px-3 py-1 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200"
+                className="w-full text-gray-500 font-medium text-sm file:cursor-pointer cursor-pointer file:border-0 file:py-2 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white px-3 py-1 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200"
               />
               <br />
               <p className="text-red-500">{imageError ? imageError : ''}</p>
@@ -149,7 +149,7 @@ const SignUp = () => {
                 name="email"
                 id="email"
                 placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
               <br />
@@ -167,7 +167,7 @@ const SignUp = () => {
                 autoComplete="new-password"
                 id="password"
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200 text-gray-900"
               />
               <p className="absolute right-3 bottom-3">
                 {eyeIcon ? (
@@ -185,7 +185,7 @@ const SignUp = () => {
             <button
               disabled={loading}
               type="submit"
-              className="disabled:cursor-not-allowed bg-rose-500 w-full rounded-md py-3 text-white"
+              className="disabled:cursor-not-allowed bg-[#1B1F3B] w-full rounded-md py-3 text-white"
             >
               {loading ? (
                 <ImSpinner3 className="animate-spin m-auto" />

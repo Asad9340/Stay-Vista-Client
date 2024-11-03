@@ -1,7 +1,7 @@
 function ContactUs() {
   return (
     <div className="bg-white">
-      <header className="bg-rose-500 text-white text-center py-12">
+      <header className="bg-[#1B1F3B] text-white text-center py-12">
         <h1 className="text-4xl font-bold mt-16">Contact Us</h1>
       </header>
       <section className="text-center py-12 px-4">
@@ -60,7 +60,7 @@ function ContactUs() {
           </div>
           <button
             type="submit"
-            className="w-full bg-rose-500 text-white py-3 rounded-lg shadow-lg hover:bg-rose-400 transition-colors"
+            className="w-full bg-[#1B1F3B] text-white py-3 rounded-lg shadow-lg hover:bg-rose-400 transition-colors"
           >
             Send Message
           </button>
@@ -96,7 +96,7 @@ function ContactUs() {
           </div>
         </div>
       </section>
-      <footer className="bg-rose-500 text-white text-center py-8">
+      <footer className="bg-[#1B1F3B] text-white text-center py-8">
         <p>
           &copy; Copyright Stay Vista 2024. All rights reserved. Made by Md
           Asadul Islam.

@@ -19,7 +19,7 @@ const AddRoomForm = ({
                 Location
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
                 name="location"
                 id="location"
                 type="text"
@@ -34,7 +34,7 @@ const AddRoomForm = ({
               </label>
               <select
                 required
-                className="w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md"
+                className="w-full px-4 py-3 border-[#2A325A] focus:outline-[#1B1F3B] rounded-md"
                 name="category"
               >
                 {categories?.map(category => (
@@ -53,7 +53,7 @@ const AddRoomForm = ({
                 editableDateInputs={true}
                 onChange={item => setState([item.selection])}
                 moveRangeOnFirstSelection={false}
-                rangeColors={['#F43F5E']}
+                rangeColors={['#1B1F3B']}
                 ranges={state}
               />
             </div>
@@ -64,7 +64,7 @@ const AddRoomForm = ({
                 Title
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
                 name="title"
                 id="title"
                 type="text"
@@ -86,13 +86,13 @@ const AddRoomForm = ({
                       hidden
                       onChange={handleChange}
                     />
-                    <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
+                    <div className="bg-[#1B1F3B] text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-[#1B1F3B]">
                       Upload Image
                     </div>
                   </label>
                   <div>
                     {file && (
-                      <div className='pl-10'>
+                      <div className="pl-10">
                         <img
                           className="w-12 h-12 object-contain object-center"
                           src={file}
@@ -110,7 +110,7 @@ const AddRoomForm = ({
                   Price
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
                   name="price"
                   id="price"
                   type="number"
@@ -124,7 +124,7 @@ const AddRoomForm = ({
                   Total guest
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
                   name="total_guest"
                   id="guest"
                   type="number"
@@ -140,7 +140,7 @@ const AddRoomForm = ({
                   Bedrooms
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
                   name="bedrooms"
                   id="bedrooms"
                   type="number"
@@ -154,7 +154,7 @@ const AddRoomForm = ({
                   Bathrooms
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
                   name="bathrooms"
                   id="bathrooms"
                   type="number"
@@ -171,7 +171,7 @@ const AddRoomForm = ({
 
               <textarea
                 id="description"
-                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 "
+                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-[#2A325A] focus:outline-[#1B1F3B] "
                 name="description"
               ></textarea>
             </div>
@@ -180,7 +180,7 @@ const AddRoomForm = ({
 
         <button
           type="submit"
-          className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
+          className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#1B1F3B]"
         >
           Save & Continue
         </button>

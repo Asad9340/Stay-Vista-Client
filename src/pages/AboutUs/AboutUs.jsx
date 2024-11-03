@@ -1,7 +1,7 @@
 function AboutUs() {
   return (
     <div className="bg-white">
-      <header className="bg-rose-500 text-white text-center py-12">
+      <header className="bg-[#1B1F3B] text-white text-center py-12">
         <h1 className="text-4xl font-bold mt-16">About Us</h1>
       </header>
 
@@ -23,7 +23,7 @@ function AboutUs() {
         </div>
       </section>
 
-      <section className="bg-rose-500 text-white py-12 px-4">
+      <section className="bg-[#1B1F3B] text-white py-12 px-4">
         <h2 className="text-2xl font-bold text-center">Our Vision</h2>
         <p className="mt-4 text-center max-w-2xl mx-auto">
           Creating a seamless platform where anyone can book free rooms and
@@ -99,24 +99,24 @@ function AboutUs() {
         </div>
       </section>
 
-      <section className="bg-rose-500 text-white text-center py-12 px-4">
+      <section className="bg-[#1B1F3B] text-white text-center py-12 px-4">
         <h2 className="text-2xl font-bold">Traveler Testimonials</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8 max-w-5xl mx-auto">
-          <div className="p-4 shadow-lg rounded-lg bg-rose-600 hover:bg-rose-500 transition-colors">
+          <div className="p-4 shadow-lg rounded-lg bg-rose-600 hover:bg-[#1B1F3B] transition-colors">
             <p>
               An amazing experience! The booking was easy, and the room was
               perfect for my short stay.
             </p>
             <h3 className="mt-4 font-bold">- Traveler A</h3>
           </div>
-          <div className="p-4 shadow-lg rounded-lg bg-rose-600 hover:bg-rose-500 transition-colors">
+          <div className="p-4 shadow-lg rounded-lg bg-rose-600 hover:bg-[#1B1F3B] transition-colors">
             <p>
               I loved the simplicity and the fact that I could stay for free.
               Highly recommend!
             </p>
             <h3 className="mt-4 font-bold">- Traveler B</h3>
           </div>
-          <div className="p-4 shadow-lg rounded-lg bg-rose-600 hover:bg-rose-500 transition-colors">
+          <div className="p-4 shadow-lg rounded-lg bg-rose-600 hover:bg-[#1B1F3B] transition-colors">
             <p>
               Great service and the process was straightforward. The support
               team was very helpful.
@@ -153,7 +153,7 @@ function AboutUs() {
         </div>
       </section>
 
-      <footer className="bg-rose-500 text-white text-center py-8">
+      <footer className="bg-[#1B1F3B] text-white text-center py-8">
         <p>
           &copy; Copyright Stay Vista. All rights reserved. Created by Md Asadul
           Islam

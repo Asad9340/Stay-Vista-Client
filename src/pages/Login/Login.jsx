@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [eyeIcon, setEyeIcon] = useState(false);
   const location = useLocation();
-  const from=location.state || '/'
+  const from = location.state || '/';
 
   const { signInWithGoogle, loading, setLoading, signIn, resetPassword } =
     useAuth();
@@ -89,7 +89,7 @@ const Login = () => {
                     id="email"
                     required
                     placeholder="Enter Your Email Here"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200 text-gray-900"
                     data-temp-mail-org="0"
                   />
                 </div>
@@ -106,7 +106,7 @@ const Login = () => {
                     id="password"
                     required
                     placeholder="*******"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200 text-gray-900"
                   />
                   <p className="absolute right-3 bottom-3">
                     {eyeIcon ? (
@@ -125,7 +125,7 @@ const Login = () => {
                 <button
                   disabled={loading}
                   type="submit"
-                  className="disabled:cursor-not-allowed bg-rose-500 w-full rounded-md py-3 text-white"
+                  className="disabled:cursor-not-allowed bg-[#1B1F3B] w-full rounded-md py-3 text-white"
                 >
                   {loading ? (
                     <ImSpinner3 className="animate-spin m-auto" />
@@ -196,7 +196,7 @@ const Login = () => {
                     id="email"
                     required
                     placeholder="Enter Your Email Here"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200 text-gray-900"
                     data-temp-mail-org="0"
                   />
                 </div>
@@ -206,7 +206,7 @@ const Login = () => {
                 <button
                   disabled={loading}
                   type="submit"
-                  className="bg-rose-500 w-full rounded-md py-3 text-white"
+                  className="bg-[#1B1F3B] w-full rounded-md py-3 text-white"
                 >
                   {loading ? (
                     <ImSpinner9 className="animate-spin m-auto" />
