@@ -1,10 +1,27 @@
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../../hooks/useAuth';
+import RoomDataRow from '../../../components/Dashboard/DataTable/RoomDataRow/RoomDataRow';
+import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
 
 const MyListings = () => {
+  const { user } = useAuth();
+  const axiosCommon = useAxiosSecure();
+  const { data: listingsData = [], isLoading } = useQuery({
+    queryKey: ['listingsData'],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`/my-listings/${user.email}`);
+      return data;
+    },
+  });
+  console.log(listingsData);
+
+  if (isLoading) return <LoadingSpinner />;
   return (
     <>
       <Helmet>
-        <title>My Listings</title>
+        <title>My Listings | Dashboard</title>
       </Helmet>
 
       <div className="container mx-auto px-4 sm:px-8">
@@ -58,7 +75,11 @@ const MyListings = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{/* Room row data */}</tbody>
+                <tbody>
+                  {listingsData.map(room => (
+                    <RoomDataRow key={room._id} room={room} />
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
