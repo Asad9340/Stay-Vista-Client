@@ -1,17 +1,17 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Main from '../layouts/Main'
-import Home from '../pages/Home/Home'
-import ErrorPage from '../pages/ErrorPage'
-import Login from '../pages/Login/Login'
-import SignUp from '../pages/SignUp/SignUp'
-import RoomDetails from '../pages/RoomDetails/RoomDetails'
-import PrivateRoute from './PrivateRoute'
-import DashboardLayout from '../layouts/DashboardLayout'
-import Statistics from '../pages/Dashboard/Common/Statistics'
+import { createBrowserRouter } from 'react-router-dom';
+import Main from '../layouts/Main';
+import Home from '../pages/Home/Home';
+import ErrorPage from '../pages/ErrorPage';
+import Login from '../pages/Login/Login';
+import SignUp from '../pages/SignUp/SignUp';
+import RoomDetails from '../pages/RoomDetails/RoomDetails';
+import PrivateRoute from './PrivateRoute';
+import DashboardLayout from '../layouts/DashboardLayout';
+import Statistics from '../pages/Dashboard/Common/Statistics';
 import AddRoom from './../pages/Dashboard/Host/AddRoom';
 import MyListings from './../pages/Dashboard/Host/MyListings';
-import AboutUs from '../pages/AboutUs/AboutUs'
-import ContactUs from '../pages/ContactUs/ContactUs'
+import AboutUs from '../pages/AboutUs/AboutUs';
+import ContactUs from '../pages/ContactUs/ContactUs';
 
 export const router = createBrowserRouter([
   {
@@ -25,11 +25,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/about-us',
-        element:<AboutUs/>
+        element: <AboutUs />,
       },
       {
         path: '/contact-us',
-        element:<ContactUs/>
+        element: <ContactUs />,
       },
       {
         path: '/room/:id',
@@ -45,24 +45,28 @@ export const router = createBrowserRouter([
   { path: '/signup', element: <SignUp /> },
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
-        element:<Statistics/>,
+        element: <Statistics />,
       },
       {
         path: 'statistics',
-        element:<Statistics/>,
+        element: <Statistics />,
       },
       {
         path: 'add-room',
-        element:<AddRoom/>
+        element: <AddRoom />,
       },
       {
         path: 'my-listings',
-        element:<MyListings/>
+        element: <MyListings />,
       },
-    ]
-  }
+    ],
+  },
 ]);
