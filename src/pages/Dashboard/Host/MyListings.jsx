@@ -4,19 +4,35 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import RoomDataRow from '../../../components/Dashboard/DataTable/RoomDataRow/RoomDataRow';
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const MyListings = () => {
   const { user } = useAuth();
-  const axiosCommon = useAxiosSecure();
-  const { data: listingsData = [], isLoading } = useQuery({
+  const axiosSecure = useAxiosSecure();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const {
+    data: listingsData = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ['listingsData'],
     queryFn: async () => {
-      const { data } = await axiosCommon.get(`/my-listings/${user.email}`);
+      const { data } = await axiosSecure.get(`/my-listings/${user.email}`);
       return data;
     },
   });
-  console.log(listingsData);
-
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const handleDelete = async id => {
+    const res = await axiosSecure.delete(`/room/${id}`);
+    if (res.status == 200 && res.statusText == 'OK') {
+      toast.success('Successfully deleted the room.');
+      refetch();
+    }
+  };
   if (isLoading) return <LoadingSpinner />;
   return (
     <>
@@ -77,7 +93,14 @@ const MyListings = () => {
                 </thead>
                 <tbody>
                   {listingsData.map(room => (
-                    <RoomDataRow key={room._id} room={room} />
+                    <RoomDataRow
+                      key={room._id}
+                      room={room}
+                      closeModal={closeModal}
+                      isOpen={isOpen}
+                      setIsOpen={setIsOpen}
+                      handleDelete={handleDelete}
+                    />
                   ))}
                 </tbody>
               </table>
