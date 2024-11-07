@@ -43,7 +43,7 @@ const Navbar = () => {
                   <Link>Home</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
-                  <Link to='/about-us'>About Us</Link>
+                  <Link to="/about-us">About Us</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
                   <Link to="/contact-us">Contact Us</Link>
@@ -86,14 +86,16 @@ const Navbar = () => {
               {isOpen && (
                 <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm">
                   <div className="flex flex-col cursor-pointer">
-                    <Link
-                      onClick={() => setIsOpen(!isOpen)}
-                      to="/dashboard"
-                      className=" px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
-                    >
-                      <TbLayoutDashboardFilled />
-                      Dashboard
-                    </Link>
+                    {user && (
+                      <Link
+                        onClick={() => setIsOpen(!isOpen)}
+                        to="/dashboard"
+                        className=" px-4 py-3 hover:bg-neutral-100 transition font-semibold flex items-center gap-2"
+                      >
+                        <TbLayoutDashboardFilled />
+                        Dashboard
+                      </Link>
+                    )}
                     <hr />
                     <Link
                       onClick={() => setIsOpen(!isOpen)}

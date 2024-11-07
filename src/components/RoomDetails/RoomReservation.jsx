@@ -3,7 +3,6 @@ import Button from '../Shared/Button/Button';
 import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 import { differenceInCalendarDays } from 'date-fns';
-
 const RoomReservation = ({ room }) => {
   const startDate = room?.from ? new Date(room.from) : new Date();
   const endDate = room?.to ? new Date(room.to) : new Date();
