@@ -13,10 +13,12 @@ import { IoLogIn } from 'react-icons/io5';
 import { MdAccountCircle } from 'react-icons/md';
 import { TbLayoutDashboardFilled } from 'react-icons/tb';
 import HostModal from './../../Modal/HostRequestModal';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const handleLogOut = () => {
@@ -27,8 +29,19 @@ const Navbar = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-  const handleBecomeHost = () => {
-    console.log("click");
+  const handleBecomeHost = async () => {
+    let currentUser = {
+      email: user?.email,
+      role: 'guest',
+      status: 'Requested',
+    };
+    const { data } = await axiosSecure.put('/user', currentUser);
+    if (data.modifiedCount > 0) {
+      toast.success('Please wait for admin approval');
+    } else {
+     toast.success('You have already sent the request...')
+    }
+    closeModal();
   };
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
