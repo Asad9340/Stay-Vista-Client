@@ -1,3 +1,4 @@
+import Button from '../Shared/Button/Button';
 import {
   Dialog,
   Transition,
@@ -7,8 +8,12 @@ import {
 } from '@headlessui/react';
 import { Fragment } from 'react';
 import { MdCancel } from 'react-icons/md';
-import Button from '../Shared/Button/Button';
-const UpdateProfileModal = ({ closeModal, isOpen, handleUpdate, user }) => {
+const ChangePasswordModal = ({
+  closeModal,
+  isOpen,
+  handlePasswordUpdate,
+  user,
+}) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -41,49 +46,41 @@ const UpdateProfileModal = ({ closeModal, isOpen, handleUpdate, user }) => {
                     as="h3"
                     className="text-lg text-center font-medium leading-6 text-gray-900"
                   >
-                    Update Your Details
+                    Update Your Password
                   </DialogTitle>
                   <p>
                     <MdCancel size={34} onClick={closeModal} />
                   </p>
                 </div>
 
-                <form onSubmit={handleUpdate}>
+                <div>
                   <div className="mt-2">
                     <div>
                       <label htmlFor="email" className="block mb-2 text-sm">
-                        Name
+                        Email address
                       </label>
                       <input
-                        type="text"
-                        name="name"
-                        id="name"
+                        type="email"
+                        name="email"
+                        id="email"
                         required
-                        defaultValue={user?.displayName}
-                        placeholder="Enter Your Name Here"
+                        defaultValue={user?.email}
+                        disabled
+                        placeholder="Enter Your Email Here"
                         className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200 text-gray-900"
                         data-temp-mail-org="0"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="image" className="block mb-2 text-sm">
-                        Select Image:
-                      </label>
-                      <input
-                        type="file"
-                        id="image"
-                        name="image"
-                        required
-                        accept="image/*"
-                        className="w-full text-gray-500 font-medium text-sm file:cursor-pointer cursor-pointer file:border-0 file:py-2 file:px-4 file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white px-3 py-1 border rounded-md border-gray-300 focus:outline-[#1B1F3B] bg-gray-200"
                       />
                     </div>
                   </div>
                   <hr className="mt-8 " />
                   <div className="flex mt-2 justify-around">
-                    <Button label="Update" small={true} />
+                    <Button
+                      onClick={handlePasswordUpdate}
+                      label="Change Password"
+                      small={true}
+                    />
                   </div>
-                </form>
+                </div>
               </DialogPanel>
             </TransitionChild>
           </div>
@@ -93,4 +90,4 @@ const UpdateProfileModal = ({ closeModal, isOpen, handleUpdate, user }) => {
   );
 };
 
-export default UpdateProfileModal;
+export default ChangePasswordModal;

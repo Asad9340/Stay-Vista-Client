@@ -6,14 +6,19 @@ import { useState } from 'react';
 import UpdateProfileModal from '../../../components/Modal/UpdateProfileModal';
 import { imgbbImageUpload } from '../../../api/utils/imageUpload';
 import toast from 'react-hot-toast';
+import ChangePasswordModal from '../../../components/Modal/ChangePasswordModal';
 
 function Profile() {
-  const { user, updateUserProfile } = useAuth();
+  const { user, updateUserProfile, resetPassword } = useAuth();
   const [role, isLoading] = useRole();
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+  const closeModal2 = () => {
+    setIsOpen2(false);
   };
   const handleUpdate = async e => {
     e.preventDefault();
@@ -28,6 +33,16 @@ function Profile() {
       toast.error(`Error:${e.message}`);
     }
     setIsOpen(false);
+  };
+  const handlePasswordUpdate = async () => {
+    try {
+      const email = user.email;
+      await resetPassword(email);
+      toast.success('Password Reset Email Sent Successfully');
+    } catch (e) {
+      toast.error(`Error:${e.message}`);
+    }
+    setIsOpen2(false);
   };
   if (isLoading) return <LoadingSpinner />;
   return (
@@ -78,15 +93,25 @@ function Profile() {
                     Update Profile
                   </button>
                   <UpdateProfileModal
+                    user={user}
                     handleUpdate={handleUpdate}
                     closeModal={closeModal}
                     isOpen={isOpen}
                   />
                 </div>
                 <div>
-                  <button className="bg-[#1B1F3B] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-opacity-80">
+                  <button
+                    onClick={() => setIsOpen2(true)}
+                    className="bg-[#1B1F3B] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-opacity-80"
+                  >
                     Change Password
                   </button>
+                  <ChangePasswordModal
+                    isOpen={isOpen2}
+                    user={user}
+                    closeModal={closeModal2}
+                    handlePasswordUpdate={handlePasswordUpdate}
+                  />
                 </div>
               </div>
             </div>
