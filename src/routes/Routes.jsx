@@ -13,6 +13,7 @@ import MyListings from './../pages/Dashboard/Host/MyListings';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import Profile from '../pages/Dashboard/Common/Profile';
+import ManageUsers from '../pages/Dashboard/Admin/ManageUsers';
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: 'my-listings',
         element: <MyListings />,
+      },
+      {
+        path: 'manage-users',
+        element: <ManageUsers />,
       },
       {
         path: 'profile',
