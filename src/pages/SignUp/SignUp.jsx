@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
-import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { ImSpinner3 } from 'react-icons/im';
