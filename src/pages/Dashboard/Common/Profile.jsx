@@ -50,7 +50,7 @@ function Profile() {
       <Helmet>
         <title>Profile</title>
       </Helmet>
-      <div className="bg-white shadow-lg rounded-2xl w-3/5">
+      <div className="bg-white shadow-lg rounded-2xl w-full mt-10 md:mt-0 md:w-3/5">
         <img
           alt="profile"
           src="https://wallpapercave.com/wp/wp10784415.jpg"
