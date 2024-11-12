@@ -5,10 +5,10 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/react';
+import { FaSpinner } from 'react-icons/fa';
 import { Fragment } from 'react';
 import { MdCancel } from 'react-icons/md';
-import Button from '../Shared/Button/Button';
-const UpdateProfileModal = ({ closeModal, isOpen, handleUpdate, user }) => {
+const UpdateProfileModal = ({ closeModal, isOpen, handleUpdate, user,loading }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -81,7 +81,17 @@ const UpdateProfileModal = ({ closeModal, isOpen, handleUpdate, user }) => {
                   </div>
                   <hr className="mt-8 " />
                   <div className="flex mt-2 justify-around">
-                    <Button label="Update" small={true} />
+                    <button
+                      disabled={loading}
+                      type="submit"
+                      className="disabled:cursor-not-allowed bg-[#1B1F3B] w-full rounded-md py-3 text-white"
+                    >
+                      {loading ? (
+                        <FaSpinner className="animate-spin m-auto" />
+                      ) : (
+                        'Update Profile'
+                      )}
+                    </button>
                   </div>
                 </form>
               </DialogPanel>

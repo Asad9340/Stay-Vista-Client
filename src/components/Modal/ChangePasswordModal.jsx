@@ -1,4 +1,3 @@
-import Button from '../Shared/Button/Button';
 import {
   Dialog,
   Transition,
@@ -7,12 +6,14 @@ import {
   DialogTitle,
 } from '@headlessui/react';
 import { Fragment } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 import { MdCancel } from 'react-icons/md';
 const ChangePasswordModal = ({
   closeModal,
   isOpen,
   handlePasswordUpdate,
   user,
+  loading,
 }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -74,11 +75,18 @@ const ChangePasswordModal = ({
                   </div>
                   <hr className="mt-8 " />
                   <div className="flex mt-2 justify-around">
-                    <Button
+                    <button
+                      disabled={loading}
                       onClick={handlePasswordUpdate}
-                      label="Change Password"
-                      small={true}
-                    />
+                      type="submit"
+                      className="disabled:cursor-not-allowed bg-[#1B1F3B] w-full rounded-md py-3 text-white"
+                    >
+                      {loading ? (
+                        <FaSpinner className="animate-spin m-auto" />
+                      ) : (
+                        'Update Password'
+                      )}
+                    </button>
                   </div>
                 </div>
               </DialogPanel>

@@ -13,7 +13,7 @@ function Profile() {
   const [role, isLoading] = useRole();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -21,6 +21,7 @@ function Profile() {
     setIsOpen2(false);
   };
   const handleUpdate = async e => {
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -33,8 +34,10 @@ function Profile() {
       toast.error(`Error:${e.message}`);
     }
     setIsOpen(false);
+    setLoading(false);
   };
   const handlePasswordUpdate = async () => {
+    setLoading(true);
     try {
       const email = user.email;
       await resetPassword(email);
@@ -43,6 +46,7 @@ function Profile() {
       toast.error(`Error:${e.message}`);
     }
     setIsOpen2(false);
+    setLoading(false);
   };
   if (isLoading) return <LoadingSpinner />;
   return (
@@ -97,6 +101,7 @@ function Profile() {
                     handleUpdate={handleUpdate}
                     closeModal={closeModal}
                     isOpen={isOpen}
+                    loading={loading}
                   />
                 </div>
                 <div>
@@ -111,6 +116,7 @@ function Profile() {
                     user={user}
                     closeModal={closeModal2}
                     handlePasswordUpdate={handlePasswordUpdate}
+                    loading={loading}
                   />
                 </div>
               </div>
