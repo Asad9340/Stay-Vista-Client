@@ -14,6 +14,8 @@ import AboutUs from '../pages/AboutUs/AboutUs';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import Profile from '../pages/Dashboard/Common/Profile';
 import ManageUsers from '../pages/Dashboard/Admin/ManageUsers';
+import AdminRoute from './AdminRoute';
+import HostRoute from './HostRoute';
 
 export const router = createBrowserRouter([
   {
@@ -55,27 +57,57 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Statistics />,
+        element: (
+          <PrivateRoute>
+            <Statistics />
+          </PrivateRoute>
+        ),
       },
       {
         path: 'statistics',
-        element: <Statistics />,
+        element: (
+          <PrivateRoute>
+            <Statistics />
+          </PrivateRoute>
+        ),
       },
       {
         path: 'add-room',
-        element: <AddRoom />,
+        element: (
+          <PrivateRoute>
+            <HostRoute>
+              <AddRoom />
+            </HostRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'my-listings',
-        element: <MyListings />,
+        element: (
+          <PrivateRoute>
+            <HostRoute>
+              <MyListings />
+            </HostRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'manage-users',
-        element: <ManageUsers />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'profile',
-        element: <Profile/>
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
     ],
   },
