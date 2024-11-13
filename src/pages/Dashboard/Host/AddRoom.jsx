@@ -9,6 +9,7 @@ import { useMutation } from '@tanstack/react-query';
 
 function AddRoom() {
   const { user, setLoading } = useAuth();
+  const [loading,setIsLoading] = useState(false)
   const [file, setFile] = useState('');
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ function AddRoom() {
   });
 
   const handleAddRoom = async e => {
+    setIsLoading(true);
     e.preventDefault();
     const form = e.target;
     const location = form.location.value;
@@ -74,6 +76,7 @@ function AddRoom() {
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -84,6 +87,7 @@ function AddRoom() {
         handleAddRoom={handleAddRoom}
         handleChange={handleChange}
         file={file}
+        loading={loading}
       />
     </div>
   );
