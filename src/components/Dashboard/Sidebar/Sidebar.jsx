@@ -74,7 +74,7 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/* Conditional toggle button here.. */}
-            <ToggleBtn toggleHandler={toggleHandler} />
+            {role === 'host' && <ToggleBtn toggleHandler={toggleHandler} />}
             {/*  Menu Items */}
             <nav>
               {/* Statistics */}
