@@ -3,20 +3,27 @@ import Button from '../Shared/Button/Button';
 import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 import { differenceInCalendarDays } from 'date-fns';
+import BookingModal from '../Modal/BookingModal';
+import useAuth from './../../hooks/useAuth';
 const RoomReservation = ({ room }) => {
-  const startDate = room?.from ? new Date(room.from) : new Date();
-  const endDate = room?.to ? new Date(room.to) : new Date();
-
+  const { user } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
   const [state, setState] = useState([
     {
-      startDate: startDate,
-      endDate: endDate,
+      startDate: new Date(room.from),
+      endDate: new Date(room.to),
       key: 'selection',
     },
   ]);
+
+  // total days * price
   const totalPrice =
     parseInt(differenceInCalendarDays(new Date(room.to), new Date(room.from))) *
     room?.price;
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   return (
     <div className="rounded-xl border-[1px] border-neutral-200 overflow-hidden bg-white">
       <div className="flex items-center gap-1 p-4">
@@ -31,11 +38,10 @@ const RoomReservation = ({ room }) => {
           editableDateInputs={true}
           onChange={item => {
             console.log(item);
-
             setState([
               {
-                startDate: startDate,
-                endDate: endDate,
+                startDate: new Date(room.from),
+                endDate: new Date(room.to),
                 key: 'selection',
               },
             ]);
@@ -46,7 +52,16 @@ const RoomReservation = ({ room }) => {
       </div>
       <hr />
       <div className="p-4">
-        <Button label={'Reserve'} />
+        <Button
+          onClick={() => setIsOpen(true)}
+          disabled={room?.booked}
+          label={room?.booked ? 'Booked' : 'Reserve'}
+        />
+        <BookingModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          bookingInfo={{ ...room, price: totalPrice, guest: user?.displayName }}
+        />
       </div>
       <hr />
       <div className="p-4 flex items-center justify-between font-semibold text-lg">

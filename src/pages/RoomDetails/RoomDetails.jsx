@@ -5,17 +5,21 @@ import Heading from '../../components/Shared/Heading';
 import { useParams } from 'react-router-dom';
 import useAxiosCommon from '../../hooks/useAxiosCommon';
 import { useQuery } from '@tanstack/react-query';
+import LoadingSpinner from './../../components/Shared/LoadingSpinner';
 
 const RoomDetails = () => {
   const { id } = useParams();
   const axiosCommon = useAxiosCommon();
-  const { data: room = [] } = useQuery({
-    queryKey: ['room'],
+
+  const { data: room = {}, isLoading } = useQuery({
+    queryKey: ['room', id],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/room/${id}`);
       return data;
     },
   });
+
+  if (isLoading) return <LoadingSpinner />;
   return (
     <Container>
       <Helmet>
