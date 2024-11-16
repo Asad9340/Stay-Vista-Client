@@ -58,13 +58,13 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto">
+            <div className="w-full hidden md:flex p-2 shadow-lg rounded-lg justify-center items-center bg-[#1B1F3B1A] mx-auto">
               <Link to="/">
                 <img
                   // className='hidden md:block'
-                  src="https://i.ibb.co/4ZXzmq5/logo.png"
+                  src="https://i.postimg.cc/13rFBgXg/logo-removebg-preview-1.png"
                   alt="logo"
-                  width="100"
+                  width="200"
                   height="100"
                 />
               </Link>
