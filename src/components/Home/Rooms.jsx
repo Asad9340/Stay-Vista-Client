@@ -1,10 +1,11 @@
-import Card from './Card';
+
 import Container from '../Shared/Container';
 import Heading from '../Shared/Heading';
 import LoadingSpinner from '../Shared/LoadingSpinner';
 import useAxiosCommon from '../../hooks/useAxiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
+import Room from './Room';
 
 const Rooms = () => {
   const axiosCommon = useAxiosCommon();
@@ -24,9 +25,9 @@ const Rooms = () => {
   return (
     <Container>
       {rooms && rooms.length > 0 ? (
-        <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-8">
+        <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {rooms.map(room => (
-            <Card key={room._id} room={room} />
+            <Room key={room._id} room={room} />
           ))}
         </div>
       ) : (

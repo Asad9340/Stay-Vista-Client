@@ -1,11 +1,12 @@
 const Footer = () => {
   return (
-    <footer className='px-4 divide-y  text-gray-800 relative bottom-0 left-0'>
-      <div className='py-6 text-sm text-center text-gray-400'>
-        © 2024-2025 StayVista Inc. All rights reserved.
-      </div>
+    <footer className="bg-[#1B1F3B] text-white text-center py-8">
+      <p>
+        &copy; Copyright Stay Vista 2024. All rights reserved. Made by Md Asadul
+        Islam.
+      </p>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

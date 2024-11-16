@@ -52,7 +52,7 @@ const RoomDetails = () => {
               />
             </div>
 
-            <div className="relative w-full md:h-[70vh] overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
+            <div className="relative w-full md:h-[90vh] overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
               <img
                 className="object-cover w-full h-full"
                 src={room?.image || '/default-room.jpg'}
