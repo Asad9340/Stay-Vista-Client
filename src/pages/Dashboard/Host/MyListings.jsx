@@ -101,6 +101,7 @@ const MyListings = () => {
                         isOpen={isOpen}
                         setIsOpen={setIsOpen}
                         handleDelete={handleDelete}
+                        refetch={refetch}
                       />
                     ))}
                   </tbody>

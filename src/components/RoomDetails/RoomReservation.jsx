@@ -5,8 +5,10 @@ import { useState } from 'react';
 import { differenceInCalendarDays } from 'date-fns';
 import BookingModal from '../Modal/BookingModal';
 import useAuth from './../../hooks/useAuth';
+import useRole from './../../hooks/useRole';
 const RoomReservation = ({ room, refetch }) => {
   const { user } = useAuth();
+  const [role] =useRole()
   const [isOpen, setIsOpen] = useState(false);
   const [state, setState] = useState([
     {
@@ -54,7 +56,7 @@ const RoomReservation = ({ room, refetch }) => {
       <div className="p-4">
         <Button
           onClick={() => setIsOpen(true)}
-          disabled={room?.booked}
+          disabled={room?.booked || role==='admin'}
           label={room?.booked ? 'Booked' : 'Reserve'}
         />
         <BookingModal
