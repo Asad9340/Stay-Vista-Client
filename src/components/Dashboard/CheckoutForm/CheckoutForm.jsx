@@ -28,7 +28,6 @@ const CheckoutForm = ({ closeModal, bookingInfo, refetch }) => {
   //   get clientSecret
   const getClientSecret = async price => {
     const { data } = await axiosSecure.post(`/create-payment-intent`, price);
-    console.log('clientSecret from server--->', data);
     setClientSecret(data.clientSecret);
   };
 
@@ -37,21 +36,13 @@ const CheckoutForm = ({ closeModal, bookingInfo, refetch }) => {
     event.preventDefault();
     setProcessing(true);
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
-
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
     const card = elements.getElement(CardElement);
 
     if (card == null) {
       return;
     }
-
-    // Use your card Element with other Stripe.js APIs
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card,
@@ -67,7 +58,6 @@ const CheckoutForm = ({ closeModal, bookingInfo, refetch }) => {
       setCardError('');
     }
 
-    // confirm payment
     const { error: confirmError, paymentIntent } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -88,7 +78,6 @@ const CheckoutForm = ({ closeModal, bookingInfo, refetch }) => {
 
     if (paymentIntent.status === 'succeeded') {
       console.log(paymentIntent);
-      // 1. Create payment info object
       const paymentInfo = {
         ...bookingInfo,
         roomId: bookingInfo._id,

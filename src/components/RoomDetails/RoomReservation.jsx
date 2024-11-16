@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { differenceInCalendarDays } from 'date-fns';
 import BookingModal from '../Modal/BookingModal';
 import useAuth from './../../hooks/useAuth';
-const RoomReservation = ({ room }) => {
+const RoomReservation = ({ room, refetch }) => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [state, setState] = useState([
@@ -60,7 +60,16 @@ const RoomReservation = ({ room }) => {
         <BookingModal
           isOpen={isOpen}
           closeModal={closeModal}
-          bookingInfo={{ ...room, price: totalPrice, guest: user?.displayName }}
+          bookingInfo={{
+            ...room,
+            price: totalPrice,
+            guest: {
+              name: user?.displayName,
+              email: user?.email,
+              image: user?.photoURL,
+            },
+          }}
+          refetch={refetch}
         />
       </div>
       <hr />

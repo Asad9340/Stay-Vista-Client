@@ -25,7 +25,7 @@ const RoomDetails = () => {
   const { id } = useParams();
   const axiosCommon = useAxiosCommon();
 
-  const { data: room = {}, isLoading } = useQuery({
+  const { data: room = {}, isLoading,refetch } = useQuery({
     queryKey: ['room', id],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/room/${id}`);
@@ -150,7 +150,7 @@ const RoomDetails = () => {
             {/* Room Reservation Section */}
             <div className="md:col-span-3 order-first md:order-last mb-10">
               <div className="bg-white p-5 md:p-4 rounded-lg shadow-md">
-                <RoomReservation room={room} />
+                <RoomReservation room={room} refetch={refetch} />
               </div>
             </div>
           </div>
