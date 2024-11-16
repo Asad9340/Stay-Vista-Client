@@ -39,7 +39,7 @@ const Navbar = () => {
     if (data.modifiedCount > 0) {
       toast.success('Please wait for admin approval');
     } else {
-     toast.success('You have already sent the request...')
+      toast.success('You have already sent the request...');
     }
     closeModal();
   };
@@ -52,9 +52,9 @@ const Navbar = () => {
             <Link to="/">
               <img
                 // className='hidden md:block'
-                src="https://i.ibb.co/4ZXzmq5/logo.png"
+                src="https://i.postimg.cc/13rFBgXg/logo-removebg-preview-1.png"
                 alt="logo"
-                width="100"
+                width="200"
                 height="100"
               />
             </Link>
