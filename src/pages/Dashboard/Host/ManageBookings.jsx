@@ -1,6 +1,55 @@
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../hooks/useAuth';
+import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
+import BookingDataRow from '../../../components/Dashboard/DataTable/BookingDataRow/BookingDataRow';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 const ManageBookings = () => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const {
+    data: manageBooking = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ['manageBooking'],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/manage-booking/${user?.email}`);
+      return data;
+    },
+  });
+
+  //   delete
+  const { mutateAsync } = useMutation({
+    mutationFn: async id => {
+      const { data } = await axiosSecure.delete(`/booking/cancel/${id}`);
+      return data;
+    },
+    onSuccess: async (data, id) => {
+      refetch();
+      toast.success('Booking Canceled');
+      await axiosSecure.patch(`/room/status/${id}`, {
+        status: false,
+      });
+    },
+  });
+
+  const handleDelete = async id => {
+    try {
+      await mutateAsync(id);
+    } catch (err) {
+      toast.error(err.message);
+    }
+    closeModal();
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  if (isLoading) return <LoadingSpinner />;
   return (
     <>
       <Helmet>
@@ -52,7 +101,20 @@ const ManageBookings = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{/* Table row data */}</tbody>
+                <tbody>
+                  {/* Table row data */}
+                  {manageBooking.map(booking => (
+                    <BookingDataRow
+                      key={booking._id}
+                      booking={booking}
+                      refetch={refetch}
+                      closeModal={closeModal}
+                      isOpen={isOpen}
+                      setIsOpen={setIsOpen}
+                      handleDelete={handleDelete}
+                    />
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>

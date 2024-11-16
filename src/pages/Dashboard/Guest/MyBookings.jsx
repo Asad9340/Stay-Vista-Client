@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
 import useAuth from '../../../hooks/useAuth';
 import BookingDataRow from '../../../components/Dashboard/DataTable/BookingDataRow/BookingDataRow';
@@ -25,23 +25,28 @@ const MyBookings = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const handleDelete = async id => {
-    try {
-      const result = await axiosSecure.patch(`/room/status/${id}`, {
+
+  //   delete
+  const { mutateAsync } = useMutation({
+    mutationFn: async id => {
+      const { data } = await axiosSecure.delete(`/booking/cancel/${id}`);
+      return data;
+    },
+    onSuccess: async (data,id) => {
+      refetch();
+      toast.success('Booking Canceled');
+      await axiosSecure.patch(`/room/status/${id}`, {
         status: false,
       });
-      if (result.data.modifiedCount > 0) {
-        const deletedResult = await axiosSecure.delete(`/booking/cancel/${id}`);
-        if (deletedResult.status === 200) {
-          toast.success('Cancelled Booking Successfully');
-          refetch();
-        } else {
-          toast.error('Failed to cancel Booking');
-        }
+    },
+  });
+
+  const handleDelete = async id => {
+      try {
+        await mutateAsync(id);
+      } catch (err) {
+        toast.error(err.message);
       }
-    } catch (e) {
-      toast.error(e.message);
-    }
     closeModal();
   };
   if (isLoading) return <LoadingSpinner />;

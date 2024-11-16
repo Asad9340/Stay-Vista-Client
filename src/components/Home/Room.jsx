@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import Button from '../Shared/Button/Button';
 import { AiFillDollarCircle } from 'react-icons/ai';
@@ -6,7 +5,7 @@ import { AiFillDollarCircle } from 'react-icons/ai';
 const Room = ({ room }) => {
   return (
     <div className="flex flex-col justify-between gap-2 md:gap-3  shadow-lg rounded-md px-3 py-3 font-fontPrimary">
-      <div>
+      <div className="hover:scale-105 transition">
         <div className="relative">
           <img
             src={room?.image}

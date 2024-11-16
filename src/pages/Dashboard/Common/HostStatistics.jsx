@@ -2,8 +2,23 @@ import { Calendar } from 'react-date-range';
 import { FaDollarSign } from 'react-icons/fa';
 import { BsFillCartPlusFill, BsFillHouseDoorFill } from 'react-icons/bs';
 import { GiPlayerTime } from 'react-icons/gi';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
+import { formatDistanceToNow } from 'date-fns';
+import SalesLineChart from '../../../components/Charts/SalesLineChart';
 
 const HostStatistics = () => {
+    const axiosSecure = useAxiosSecure();
+    const { data: hostStatistics = [], isLoading } = useQuery({
+      queryKey: ['guestStatistics'],
+      queryFn: async () => {
+        const { data } = await axiosSecure.get('/host-stat');
+        return data;
+      },
+    });
+    console.log(hostStatistics);
+    if (isLoading) return <LoadingSpinner />;
   return (
     <div>
       <div className="mt-12">
@@ -21,7 +36,7 @@ const HostStatistics = () => {
                 Total Sales
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                $45
+                $ {hostStatistics?.totalPrice}
               </h4>
             </div>
           </div>
@@ -38,7 +53,7 @@ const HostStatistics = () => {
                 Total Bookings
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                56
+                {hostStatistics?.totalBookings}
               </h4>
             </div>
           </div>
@@ -54,7 +69,7 @@ const HostStatistics = () => {
                 Total Rooms
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                435
+                {hostStatistics?.totalRooms}
               </h4>
             </div>
           </div>
@@ -71,7 +86,9 @@ const HostStatistics = () => {
                 Host Since...
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                3 Days
+                {formatDistanceToNow(new Date(hostStatistics?.hostSince), {
+                  addSuffix: true,
+                })}
               </h4>
             </div>
           </div>
@@ -81,10 +98,11 @@ const HostStatistics = () => {
           {/* Total Sales Graph */}
           <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
             {/* Render Chart Here */}
+            <SalesLineChart data={hostStatistics?.chartData} />
           </div>
           {/* Calender */}
           <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden">
-            <Calendar color="#F43F5E" />
+            <Calendar color="#1B1F3B" />
           </div>
         </div>
       </div>
