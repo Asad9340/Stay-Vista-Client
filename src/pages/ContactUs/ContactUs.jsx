@@ -4,7 +4,7 @@ function ContactUs() {
       <header className="bg-[#1B1F3B] text-white text-center py-12">
         <h1 className="text-4xl font-bold mt-16">Contact Us</h1>
       </header>
-      <section className="text-center py-12 px-4">
+      <section className="text-center py-12 px-4 max-w-7xl mx-auto">
         <h2 className="text-2xl font-bold">Get In Touch</h2>
         <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
           We are here to help you. Reach out to us via any of the following
@@ -12,16 +12,25 @@ function ContactUs() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8 animate-fadeIn">
           <div className="p-4 shadow-lg rounded-lg bg-rose-100 hover:bg-rose-200 transition-colors">
-            <h3 className="text-xl font-bold">Call Us</h3>
-            <p className="text-gray-700 mt-2">+1 123 456 7890</p>
+            <a href="tel:+8801710101984">
+              <h3 className="text-xl font-bold">Call Us</h3>
+              <p className="text-gray-700 mt-2">+8801710101984</p>
+            </a>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-rose-100 hover:bg-rose-200 transition-colors">
-            <h3 className="text-xl font-bold">Email Us</h3>
-            <p className="text-gray-700 mt-2">contact@stayvista.com</p>
+            <a href="mailto:asadulimran1999@gmail.com">
+              <h3 className="text-xl font-bold">Email Us</h3>
+              <p className="text-gray-700 mt-2">asadulimran1999@gmail.com</p>
+            </a>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-rose-100 hover:bg-rose-200 transition-colors">
-            <h3 className="text-xl font-bold">Visit Us</h3>
-            <p className="text-gray-700 mt-2">123 Health St, Wellness City</p>
+            <a
+              target="_blank"
+              href="https://www.google.com.bd/maps/place/Sirajganj/@24.4574167,89.6582812,13z/data=!3m1!4b1!4m6!3m5!1s0x39fdc1df830dba1b:0x58f0cbb092e78b62!8m2!3d24.4615545!4d89.7053442!16zL20vMDhoamdn?entry=ttu&g_ep=EgoyMDI0MTExMy4xIKXMDSoASAFQAw%3D%3D"
+            >
+              <h3 className="text-xl font-bold">Visit Us</h3>
+              <p className="text-gray-700 mt-2">123 Health St, Wellness City</p>
+            </a>
           </div>
         </div>
       </section>
@@ -66,7 +75,7 @@ function ContactUs() {
           </button>
         </form>
       </section>
-      <section className="text-center py-12 px-4">
+      <section className="text-center py-12 px-4 max-w-7xl mx-auto">
         <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
         <div className="mt-8">
           <div className="p-4 border rounded-lg shadow-md transition transform hover:scale-100 scale-90">

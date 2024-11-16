@@ -31,7 +31,7 @@ function AboutUs() {
         </p>
       </section>
 
-      <section className="text-center py-12 px-4">
+      <section className="text-center py-12 px-4 max-w-7xl mx-auto">
         <h2 className="text-2xl font-bold">What We Offer</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8">
           <div className="p-4 shadow-lg rounded-lg bg-rose-100 hover:bg-rose-200 transition-colors">
@@ -81,7 +81,7 @@ function AboutUs() {
         </div>
       </section>
 
-      <section className="text-center py-12 px-4">
+      <section className="text-center py-12 px-4 max-w-7xl mx-auto">
         <h2 className="text-2xl font-bold">Committed To Your Comfort</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8">
           <div className="p-4 shadow-lg rounded-lg bg-rose-100 hover:bg-rose-200 transition-colors">
@@ -126,7 +126,7 @@ function AboutUs() {
         </div>
       </section>
 
-      <section className="text-center py-12 px-4 w-full">
+      <section className="text-center py-12 px-4 w-full max-w-7xl mx-auto">
         <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
         <div className="mt-8">
           <div className="p-4 border rounded-lg shadow-md transition transform hover:scale-100 scale-90">
@@ -153,12 +153,6 @@ function AboutUs() {
         </div>
       </section>
 
-      <footer className="bg-[#1B1F3B] text-white text-center py-8">
-        <p>
-          &copy; Copyright Stay Vista. All rights reserved. Created by Md Asadul
-          Islam
-        </p>
-      </footer>
     </div>
   );
 }
