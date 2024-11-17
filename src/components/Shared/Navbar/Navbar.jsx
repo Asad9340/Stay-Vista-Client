@@ -14,6 +14,7 @@ import { MdAccountCircle } from 'react-icons/md';
 import { TbLayoutDashboardFilled } from 'react-icons/tb';
 import HostModal from './../../Modal/HostRequestModal';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useRole from './../../../hooks/useRole';
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -21,6 +22,7 @@ const Navbar = () => {
   const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [role]=useRole()
   const handleLogOut = () => {
     logOut();
     toast.success('LogOut Successfully');
@@ -76,15 +78,16 @@ const Navbar = () => {
               <div className="flex flex-row items-center gap-3">
                 {/* Become A Host btn */}
                 <div className="hidden md:block">
-                  {user && (
-                    <button
-                      onClick={() => setModalOpen(true)}
-                      disabled={!user}
-                      className="disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition"
-                    >
-                      Host your home
-                    </button>
-                  )}
+                  {user &&
+                    role!=='admin' &&(
+                      <button
+                        onClick={() => setModalOpen(true)}
+                        disabled={!user}
+                        className="disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition"
+                      >
+                        Host your home
+                      </button>
+                    )}
                   <HostModal
                     handleBecomeHost={handleBecomeHost}
                     closeModal={closeModal}
