@@ -5,7 +5,7 @@ import { AiFillDollarCircle } from 'react-icons/ai';
 const Room = ({ room }) => {
   return (
     <div className="flex flex-col justify-between gap-2 md:gap-3  shadow-lg rounded-md px-3 py-3 font-fontPrimary">
-      <div className="hover:scale-105 transition">
+      <Link className="hover:scale-105 transition" to={`/room/${room?._id}`}>
         <div className="relative">
           <img
             src={room?.image}
@@ -19,7 +19,7 @@ const Room = ({ room }) => {
         <p className="bg-gray-800 text-white text-center rounded-b-md">
           {room?.booked ? 'Booked' : 'Available'}
         </p>
-      </div>
+      </Link>
       <div>
         <div className="p-3 flex flex-col  space-y-2">
           <h2 className="text-lg font-semibold">
