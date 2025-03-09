@@ -28,8 +28,11 @@
     "react-icons": "^5.2.1",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.23.1",
+    "react-simple-typewriter": "^5.0.1",
     "react-spinners": "^0.13.8",
     "stripe": "^17.3.1",
+    "sweetalert2": "^11.17.2",
+    "swiper": "^11.2.5",
     "use-query-params": "^2.2.1"
   },
   "devDependencies": {

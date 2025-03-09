@@ -1,93 +1,93 @@
 import { TbBeach, TbMountain, TbPool } from 'react-icons/tb'
 import {
-  GiBarn,
   GiBoatFishing,
-  GiCactus,
+  GiCampfire,
   GiCastle,
-  GiCaveEntrance,
   GiForestCamp,
   GiIsland,
-  GiWindmill,
+  GiMountainClimbing,
+  GiPalmTree,
+  GiTeapot,
 } from 'react-icons/gi'
-import { FaSkiing } from 'react-icons/fa'
-import { BsSnow } from 'react-icons/bs'
+
 import { IoDiamond } from 'react-icons/io5'
-import { MdOutlineVilla } from 'react-icons/md'
+import { MdOutlineApartment } from 'react-icons/md';
+import { FaHotel, FaPlaneDeparture } from 'react-icons/fa';
 
 export const categories = [
   {
-    label: 'Beach',
+    label: 'Beachfront',
     icon: TbBeach,
-    description: 'This property is close to the beach!',
+    description: 'This motel is located near a beautiful beach!',
   },
   {
-    label: 'Windmills',
-    icon: GiWindmill,
-    description: 'This property is has windmills!',
+    label: 'Hill View',
+    icon: GiMountainClimbing,
+    description: 'This motel offers stunning hill views!',
   },
   {
-    label: 'Modern',
-    icon: MdOutlineVilla,
-    description: 'This property is modern!',
-  },
-  {
-    label: 'Countryside',
-    icon: TbMountain,
-    description: 'This property is in the countryside!',
-  },
-  {
-    label: 'Pools',
-    icon: TbPool,
-    description: 'This is property has a beautiful pool!',
-  },
-  {
-    label: 'Islands',
-    icon: GiIsland,
-    description: 'This property is on an island!',
-  },
-  {
-    label: 'Lake',
+    label: 'Riverfront',
     icon: GiBoatFishing,
-    description: 'This property is near a lake!',
+    description: 'This motel is located beside a scenic river!',
   },
   {
-    label: 'Skiing',
-    icon: FaSkiing,
-    description: 'This property has skiing activities!',
+    label: 'Tea Garden Retreat',
+    icon: GiTeapot,
+    description: 'Stay in a peaceful motel surrounded by lush tea gardens!',
   },
   {
-    label: 'Castles',
+    label: 'City Stay',
+    icon: MdOutlineApartment,
+    description: 'A modern motel in the heart of the city!',
+  },
+  {
+    label: 'Heritage Inn',
     icon: GiCastle,
-    description: 'This property is an ancient castle!',
+    description: 'A historic motel inspired by Bangladesh’s heritage!',
   },
   {
-    label: 'Caves',
-    icon: GiCaveEntrance,
-    description: 'This property is in a spooky cave!',
-  },
-  {
-    label: 'Camping',
+    label: 'Eco Lodge',
     icon: GiForestCamp,
-    description: 'This property offers camping activities!',
+    description: 'An eco-friendly motel amidst nature!',
   },
   {
-    label: 'Arctic',
-    icon: BsSnow,
-    description: 'This property is in arctic environment!',
+    label: 'Island Getaway',
+    icon: GiIsland,
+    description: 'This motel is on a beautiful island!',
   },
   {
-    label: 'Desert',
-    icon: GiCactus,
-    description: 'This property is in the desert!',
+    label: 'Resort Style',
+    icon: TbPool,
+    description: 'A luxurious motel with resort-style amenities!',
   },
   {
-    label: 'Barns',
-    icon: GiBarn,
-    description: 'This property is in a barn!',
+    label: 'Countryside Escape',
+    icon: TbMountain,
+    description: 'Enjoy a peaceful stay in the countryside!',
   },
   {
-    label: 'Lux',
+    label: 'Mangrove Retreat',
+    icon: GiPalmTree,
+    description: 'Stay close to the stunning Sundarbans mangrove forest!',
+  },
+  {
+    label: 'Luxury Stay',
     icon: IoDiamond,
-    description: 'This property is brand new and luxurious!',
+    description: 'Experience high-end luxury in this motel!',
   },
-]
+  {
+    label: 'Budget Friendly',
+    icon: FaHotel,
+    description: 'Affordable yet comfortable motel stays!',
+  },
+  {
+    label: 'Cultural Village Stay',
+    icon: GiCampfire,
+    description: 'Stay in a traditional village setting!',
+  },
+  {
+    label: 'Airport Transit',
+    icon: FaPlaneDeparture,
+    description: 'Convenient motel stays near the airport!',
+  },
+];

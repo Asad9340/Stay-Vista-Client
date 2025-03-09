@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import Button from '../Shared/Button/Button';
-import { AiFillDollarCircle } from 'react-icons/ai';
-
+import { TbCoinTakaFilled } from 'react-icons/tb';
 const Room = ({ room }) => {
   return (
     <div className="flex flex-col justify-between gap-2 md:gap-3  shadow-lg rounded-md px-3 py-3 font-fontPrimary">
@@ -27,22 +25,24 @@ const Room = ({ room }) => {
           </h2>{' '}
           <hr className="border border-black" />
           <p>
-            <span className="font-semibold">Product Name:</span> {room?.title}
+            <span className="font-semibold">Place Name:</span> {room?.title}
           </p>
           <p>
             <span className="font-semibold">Description:</span>{' '}
-            {room.description.length > 55
-              ? room.description.substring(0, 55) + '...'
+            {room.description.length > 100
+              ? room.description.substring(0, 100) + '...'
               : room.description}
           </p>
           <p className="flex gap-1 items-center text-2xl font-bold">
             <span className="font-semibold text-lg"> Price:</span>
-            <AiFillDollarCircle /> {room?.price}
+            <TbCoinTakaFilled /> {room?.price}
             <span className="text-lg font-semibold ml-1"> / night</span>
           </p>
           <div className="w-full">
             <Link className="w-full" to={`/room/${room?._id}`}>
-              <Button label="View Details" />
+              <button className="bg-[#1B1F3B] text-white py-2 w-full px-6 rounded-md shadow-lg hover:bg-[#1B1F6B] focus:outline-none focus:ring-2 focus:ring-[#1B1F3B] focus:ring-opacity-50 transition duration-300 ease-in-out">
+                View Details
+              </button>
             </Link>
           </div>
         </div>

@@ -10,7 +10,7 @@ const CategoryBox = ({ label, icon: Icon }) => {
   const handelCategoryClick = () => {
     let currentQuery = { category: label };
     const url = queryString.stringifyUrl({
-      url: '/',
+      url: '/category',
       query: currentQuery,
     });
     navigate(url);
@@ -23,6 +23,7 @@ const CategoryBox = ({ label, icon: Icon }) => {
               items-center
               justify-center
               gap-2
+              min-w-fit
               p-3
               border-b-2
               hover:text-neutral-800

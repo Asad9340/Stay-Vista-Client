@@ -15,21 +15,25 @@ function ContactUs() {
             <a href="tel:+8801710101984">
               <h3 className="text-xl font-bold">Call Us</h3>
               <p className="text-gray-700 mt-2">+8801710101984</p>
+              <p className="text-gray-700 mt-2">+8801790779953</p>
             </a>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-rose-100 hover:bg-rose-200 transition-colors">
             <a href="mailto:asadulimran1999@gmail.com">
               <h3 className="text-xl font-bold">Email Us</h3>
               <p className="text-gray-700 mt-2">asadulimran1999@gmail.com</p>
+              <p className="text-gray-700 mt-2">nmshakib5@gmail.com</p>
             </a>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-rose-100 hover:bg-rose-200 transition-colors">
             <a
               target="_blank"
-              href="https://www.google.com.bd/maps/place/Sirajganj/@24.4574167,89.6582812,13z/data=!3m1!4b1!4m6!3m5!1s0x39fdc1df830dba1b:0x58f0cbb092e78b62!8m2!3d24.4615545!4d89.7053442!16zL20vMDhoamdn?entry=ttu&g_ep=EgoyMDI0MTExMy4xIKXMDSoASAFQAw%3D%3D"
+              href="https://www.google.com/maps/place/AYAAN+FASHION+CLOTHING/@24.2330591,89.8959461,19.35z/data=!4m6!3m5!1s0x39fdfdfc7abfa179:0xc9f14f7302bfa40f!8m2!3d24.2330289!4d89.8964978!16s%2Fg%2F11k78d5l24?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D"
             >
               <h3 className="text-xl font-bold">Visit Us</h3>
-              <p className="text-gray-700 mt-2">123 Health St, Wellness City</p>
+              <p className="text-gray-700 mt-2">
+                Arif Nagar , Los Santash, Tangail
+              </p>
             </a>
           </div>
         </div>

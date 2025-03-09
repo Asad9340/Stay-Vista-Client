@@ -47,7 +47,7 @@ const Navbar = () => {
   };
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
-      <div className="py-4 border-b-[1px]">
+      <div className="border-b-[1px]">
         <Container>
           <div className="flex flex-row  items-center justify-between gap-3 md:gap-0">
             {/* Logo */}
@@ -66,6 +66,9 @@ const Navbar = () => {
                   <Link>Home</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
+                  <Link to="/category">Category</Link>
+                </li>
+                <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
                   <Link to="/about-us">About Us</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
@@ -78,16 +81,15 @@ const Navbar = () => {
               <div className="flex flex-row items-center gap-3">
                 {/* Become A Host btn */}
                 <div className="hidden md:block">
-                  {user &&
-                    role!=='admin' &&(
-                      <button
-                        onClick={() => setModalOpen(true)}
-                        disabled={!user}
-                        className="disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition"
-                      >
-                        Host your home
-                      </button>
-                    )}
+                  {user && role === 'guest' && (
+                    <button
+                      onClick={() => setModalOpen(true)}
+                      disabled={!user}
+                      className="disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition"
+                    >
+                      Host your home
+                    </button>
+                  )}
                   <HostModal
                     handleBecomeHost={handleBecomeHost}
                     closeModal={closeModal}

@@ -18,6 +18,13 @@ import AdminRoute from './AdminRoute';
 import HostRoute from './HostRoute';
 import MyBookings from '../pages/Dashboard/Guest/MyBookings';
 import ManageBookings from '../pages/Dashboard/Host/ManageBookings';
+import Category from './../pages/Category/Category';
+import LearnMore from './../pages/LearnMore/LearnMore';
+import Blog from '../pages/Blog/Blog';
+import RefundPolicy from '../pages/RefundPolicy/RefundPolicy';
+import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
+import TermsOfService from '../pages/TermsOfService/TermsOfService';
+import FAQ from '../pages/FAQ/FAQ';
 
 export const router = createBrowserRouter([
   {
@@ -30,12 +37,40 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: '/category',
+        element: <Category />,
+      },
+      {
         path: '/about-us',
         element: <AboutUs />,
       },
       {
         path: '/contact-us',
         element: <ContactUs />,
+      },
+      {
+        path: '/learn-more',
+        element: <LearnMore />,
+      },
+      {
+        path: '/blog',
+        element: <Blog />,
+      },
+      {
+        path: '/refund-policy',
+        element: <RefundPolicy />,
+      },
+      {
+        path: '/privacy-policy',
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: '/terms-of-service',
+        element: <TermsOfService/>
+      },
+      {
+        path: '/faq',
+        element: <FAQ/>
       },
       {
         path: '/room/:id',

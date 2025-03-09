@@ -6,9 +6,10 @@ import { differenceInCalendarDays } from 'date-fns';
 import BookingModal from '../Modal/BookingModal';
 import useAuth from './../../hooks/useAuth';
 import useRole from './../../hooks/useRole';
+import { TbCoinTakaFilled } from 'react-icons/tb';
 const RoomReservation = ({ room, refetch }) => {
   const { user } = useAuth();
-  const [role] =useRole()
+  const [role] = useRole();
   const [isOpen, setIsOpen] = useState(false);
   const [state, setState] = useState([
     {
@@ -29,8 +30,11 @@ const RoomReservation = ({ room, refetch }) => {
   return (
     <div className="rounded-xl border-[1px] border-neutral-200 overflow-hidden bg-white">
       <div className="flex items-center gap-1 p-4">
-        <div className="text-2xl font-semibold">$ {room?.price}</div>
-        <div className="font-light text-neutral-600">night</div>
+        <div className="text-2xl font-semibold flex items-center">
+          <TbCoinTakaFilled />
+          {room?.price}
+        </div>
+        <div className="font-light text-neutral-600">Taka/night</div>
       </div>
       <hr />
       <div className="flex justify-center">
@@ -56,7 +60,7 @@ const RoomReservation = ({ room, refetch }) => {
       <div className="p-4">
         <Button
           onClick={() => setIsOpen(true)}
-          disabled={room?.booked || role==='admin'}
+          disabled={room?.booked || role === 'admin'}
           label={room?.booked ? 'Booked' : 'Reserve'}
         />
         <BookingModal
@@ -77,7 +81,10 @@ const RoomReservation = ({ room, refetch }) => {
       <hr />
       <div className="p-4 flex items-center justify-between font-semibold text-lg">
         <div>Total</div>
-        <div>${totalPrice}</div>
+        <div className="flex items-center gap-1 text-2xl">
+          <TbCoinTakaFilled width={40} />
+          <span className='font-bold'>{totalPrice}</span>
+        </div>
       </div>
     </div>
   );
