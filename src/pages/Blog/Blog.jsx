@@ -8,7 +8,7 @@ const Blog = () => {
       date: 'March 10, 2024',
       description:
         'Traveling opens doors to new experiences, cultures, and memories. Here’s why you should start planning your next adventure to Bangladesh.',
-      image: '/src/assets/carousel/Ocean Breeze Resort.jpg',
+      image: '/assets/carousel/Ocean Breeze Resort.jpg',
       places: [
         {
           name: 'Sundarbans',
@@ -43,7 +43,7 @@ const Blog = () => {
       date: 'March 5, 2024',
       description:
         'Looking to travel in Bangladesh on a budget? Here are the top 10 destinations where you can explore without breaking the bank.',
-      image: '/src/assets/carousel/Misty Hills Tea Resort.webp',
+      image: '/assets/carousel/Misty Hills Tea Resort.webp',
       places: [
         {
           name: 'Sreemangal',
@@ -78,7 +78,7 @@ const Blog = () => {
       date: 'February 28, 2024',
       description:
         'Want to explore Bangladesh beyond the tourist hotspots? Here’s how you can travel like a local and experience the true essence of the country.',
-      image: '/src/assets/carousel/Sajek Valley Retreat.jpg',
+      image: '/assets/carousel/Sajek Valley Retreat.jpg',
       places: [
         {
           name: 'Sajek Valley',
@@ -113,7 +113,7 @@ const Blog = () => {
       date: 'February 15, 2024',
       description:
         'From ancient temples to vibrant festivals, discover the best cultural experiences Bangladesh has to offer.',
-      image: '/src/assets/carousel/Sajek Valley Retreat.jpg',
+      image: '/assets/carousel/Riverside Serenity Lodge.jpg',
       places: [
         {
           name: 'Mahasthangarh',
@@ -148,7 +148,7 @@ const Blog = () => {
       date: 'January 28, 2024',
       description:
         'Bangladesh is a land of natural beauty, from its mountains and hills to its rivers and beaches. Let’s explore the best natural spots.',
-      image: '/src/assets/carousel/Ocean Breeze Resort.jpg',
+      image: '/assets/carousel/Misty Hills Tea Resort.webp',
       places: [
         {
           name: 'Sundarbans',

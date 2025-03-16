@@ -22,7 +22,7 @@ const LearnMore = () => {
           </p>
           <div className="flex justify-center items-center">
             <img
-              src="/src/assets/Affordable Pricing.jpg"
+              src="/assets/Affordable Pricing.jpg"
               alt="Affordable Pricing"
               className="rounded-lg shadow-lg w-60"
             />
@@ -44,7 +44,7 @@ const LearnMore = () => {
           </p>
           <div className="flex justify-center">
             <img
-              src="/src/assets/top quality.png"
+              src="/assets/top quality.png"
               alt="Top Quality"
               className="rounded-lg shadow-lg w-60"
             />
@@ -66,7 +66,7 @@ const LearnMore = () => {
           </p>
           <div className="flex justify-center">
             <img
-              src="/src/assets/24 hour sercice.jpg"
+              src="/assets/24 hour sercice.jpg"
               alt="Support Assistance"
               className="rounded-lg shadow-lg w-60"
             />

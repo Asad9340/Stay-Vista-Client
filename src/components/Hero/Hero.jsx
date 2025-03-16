@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const slides = [
   {
-    image: '/src/assets/carousel/Misty Hills Tea Resort.webp',
+    image: '/assets/carousel/Sajek Valley Retreat.jpg',
     title: 'Welcome to Stay Vista',
     description:
       'Your gateway to effortless motel booking! Whether it’s a quick stopover or a weekend retreat, Stay Vista helps you find the perfect stay with ease.',
@@ -17,7 +17,7 @@ const slides = [
     bgColor: 'bg-[#1B1F3B] hover:bg-[#1B1F6B]',
   },
   {
-    image: '/src/assets/carousel/Riverside Serenity Lodge.jpg',
+    image: '/assets/carousel/Ocean Breeze Resort.jpg',
     title: 'Find the Best Motels',
     description:
       'Discover budget-friendly motels, cozy roadside inns, and scenic retreats. Stay Vista ensures comfort and convenience at every stop.',
@@ -26,7 +26,7 @@ const slides = [
     bgColor: 'bg-[#1B1F3B] hover:bg-[#1B1F6B]',
   },
   {
-    image: '/src/assets/carousel/Sajek Valley Retreat.jpg',
+    image: '/assets/carousel/Riverside Serenity Lodge.jpg',
     title: 'Book in Minutes!',
     description:
       'No hassle, no hidden fees—just quick and easy motel reservations with Stay Vista. Get exclusive deals and instant confirmation!',
