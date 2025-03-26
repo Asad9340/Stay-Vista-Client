@@ -126,7 +126,7 @@ const Navbar = () => {
               {showDropdown && searchResults.length > 0 && (
                 <ul className="absolute w-full bg-white border border-gray-300 mt-1 rounded-lg shadow-lg max-h-60 overflow-y-auto">
                   {searchResults.map((item, index) => (
-                    <li key={index}>
+                    <li key={index} className='shadow-lg'>
                       <Link
                         to={`/room/${item?._id}`}
                         onClick={() => handleSelectItem()}
