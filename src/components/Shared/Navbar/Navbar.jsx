@@ -1,5 +1,5 @@
 import Container from '../Container';
-import { AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -22,7 +22,10 @@ const Navbar = () => {
   const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [role]=useRole()
+  const [role] = useRole();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const handleLogOut = () => {
     logOut();
     toast.success('LogOut Successfully');
@@ -44,6 +47,32 @@ const Navbar = () => {
       toast.success('You have already sent the request...');
     }
     closeModal();
+  };
+  const handleSearchChange = event => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    if (value) {
+      fetchSearchResults(value);
+    } else {
+      setSearchResults([]);
+      setShowDropdown(false);
+    }
+  };
+  const fetchSearchResults = async query => {
+    try {
+      const response = await fetch(
+        `http://localhost:5050/search?query=${query}`
+      );
+      const data = await response.json();
+      setSearchResults(data);
+      setShowDropdown(true);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
+  const handleSelectItem = () => {
+       setSearchTerm('');
+    setShowDropdown(false);
   };
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
@@ -76,6 +105,52 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
+            {/* Search Bar */}
+            <div className="relative w-full md:w-96">
+              <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden border border-gray-300">
+                <div className="grid place-items-center h-full w-12 text-gray-500">
+                  <AiOutlineSearch className="h-6 w-6" />{' '}
+                  {/* React Search Icon */}
+                </div>
+                <input
+                  className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 pl-2"
+                  type="text"
+                  id="search"
+                  placeholder="Search something..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
+              </div>
+
+              {/* Dropdown List */}
+              {showDropdown && searchResults.length > 0 && (
+                <ul className="absolute w-full bg-white border border-gray-300 mt-1 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                  {searchResults.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        to={`/room/${item?._id}`}
+                        onClick={() => handleSelectItem()}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-16 h-16 object-cover mr-4 rounded-md"
+                        />
+                        <div className="flex flex-col">
+                          <span className="font-semibold text-gray-800">
+                            {item.title}
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            {item.location}
+                          </span>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
             {/* Dropdown Menu */}
             <div className="relative">
               <div className="flex flex-row items-center gap-3">
@@ -96,6 +171,7 @@ const Navbar = () => {
                     modalOpen={modalOpen}
                   />
                 </div>
+                <div></div>
                 {/* Dropdown btn */}
                 <div
                   onClick={() => setIsOpen(!isOpen)}

@@ -1,7 +1,7 @@
 import { Calendar } from 'react-date-range';
-import { FaDollarSign } from 'react-icons/fa';
+import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 import { BsFillCartPlusFill } from 'react-icons/bs';
-import { GiPlayerTime } from 'react-icons/gi';
+import { FaUserAlt } from 'react-icons/fa';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
@@ -29,7 +29,7 @@ const GuestStatistics = () => {
             <div
               className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-orange-600 to-orange-400 text-white shadow-orange-500/40`}
             >
-              <FaDollarSign className="w-6 h-6 text-white" />
+              <FaBangladeshiTakaSign className="w-6 h-6 text-white" />
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
@@ -63,7 +63,7 @@ const GuestStatistics = () => {
             <div
               className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-green-600 to-green-400 text-white shadow-green-500/40`}
             >
-              <GiPlayerTime className="w-6 h-6 text-white" />
+              <FaUserAlt className="w-6 h-6 text-white" />
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">

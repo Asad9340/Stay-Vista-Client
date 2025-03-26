@@ -1,7 +1,6 @@
 import { Calendar } from 'react-date-range';
-import { FaDollarSign } from 'react-icons/fa';
+import { FaDollarSign, FaUserAlt } from 'react-icons/fa';
 import { BsFillCartPlusFill, BsFillHouseDoorFill } from 'react-icons/bs';
-import { GiPlayerTime } from 'react-icons/gi';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
@@ -79,7 +78,7 @@ const HostStatistics = () => {
             <div
               className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-green-600 to-green-400 text-white shadow-green-500/40`}
             >
-              <GiPlayerTime className="w-6 h-6 text-white" />
+              <FaUserAlt e="w-6 h-6 text-white" />
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
