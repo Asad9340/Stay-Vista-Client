@@ -1,5 +1,5 @@
 import { DateRange } from 'react-date-range';
-import { categories } from './../../Categories/CategoriesData';
+import { categories } from './../../Categories/CategoriesData'; // Import your categories data
 import { ImSpinner10 } from 'react-icons/im';
 
 // eslint-disable-next-line react/prop-types
@@ -8,7 +8,7 @@ const AddRoomForm = ({
   setState,
   handleAddRoom,
   handleChange,
-  file,
+  files,
   loading,
 }) => {
   return (
@@ -35,31 +35,30 @@ const AddRoomForm = ({
                 Category
               </label>
               <select
-                required
-                className="w-full px-4 py-3 border-[#2A325A] focus:outline-[#1B1F3B] rounded-md"
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md"
                 name="category"
+                id="category"
+                required
               >
-                {categories?.map(category => (
-                  <option value={category.label} key={category.label}>
+                {categories.map((category, index) => (
+                  <option key={index} value={category.label}>
                     {category.label}
                   </option>
                 ))}
               </select>
             </div>
 
-            <div className="space-y-1">
-              <label htmlFor="location" className="block text-gray-600">
-                Select Availability Range
-              </label>
+            <div className="space-y-1 text-sm">
+              <label className="block text-gray-600">Date Range</label>
               <DateRange
                 editableDateInputs={true}
                 onChange={item => setState([item.selection])}
                 moveRangeOnFirstSelection={false}
-                rangeColors={['#1B1F3B']}
                 ranges={state}
               />
             </div>
           </div>
+
           <div className="space-y-6">
             <div className="space-y-1 text-sm">
               <label htmlFor="title" className="block text-gray-600">
@@ -86,95 +85,97 @@ const AddRoomForm = ({
                       id="image"
                       accept="image/*"
                       hidden
+                      multiple
                       onChange={handleChange}
                     />
                     <div className="bg-[#1B1F3B] text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-[#1B1F3B]">
-                      Upload Image
+                      Upload Images
                     </div>
                   </label>
                   <div>
-                    {file && (
-                      <div className="pl-10">
-                        <img
-                          className="w-12 h-12 object-contain object-center"
-                          src={file}
-                          alt=""
-                        />
+                    {files.length > 0 && (
+                      <div className="pl-10 flex gap-2">
+                        {Array.from(files).map((file, index) => (
+                          <img
+                            key={index}
+                            className="w-12 h-12 object-contain object-center"
+                            src={URL.createObjectURL(file)}
+                            alt={`uploaded-thumbnail-${index}`}
+                          />
+                        ))}
                       </div>
                     )}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex justify-between gap-2">
-              <div className="space-y-1 text-sm">
-                <label htmlFor="price" className="block text-gray-600">
-                  Price
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
-                  name="price"
-                  id="price"
-                  type="number"
-                  placeholder="Price"
-                  required
-                />
-              </div>
 
-              <div className="space-y-1 text-sm">
-                <label htmlFor="guest" className="block text-gray-600">
-                  Total guest
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
-                  name="total_guest"
-                  id="guest"
-                  type="number"
-                  placeholder="Total guest"
-                  required
-                />
-              </div>
+            <div className="space-y-1 text-sm">
+              <label htmlFor="price" className="block text-gray-600">
+                Price
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
+                name="price"
+                id="price"
+                type="number"
+                placeholder="Price"
+                required
+              />
             </div>
 
-            <div className="flex justify-between gap-2">
-              <div className="space-y-1 text-sm">
-                <label htmlFor="bedrooms" className="block text-gray-600">
-                  Bedrooms
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
-                  name="bedrooms"
-                  id="bedrooms"
-                  type="number"
-                  placeholder="Bedrooms"
-                  required
-                />
-              </div>
+            <div className="space-y-1 text-sm">
+              <label htmlFor="total_guest" className="block text-gray-600">
+                Total Guests
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
+                name="total_guest"
+                id="total_guest"
+                type="number"
+                placeholder="Total Guests"
+                required
+              />
+            </div>
 
-              <div className="space-y-1 text-sm">
-                <label htmlFor="bathrooms" className="block text-gray-600">
-                  Bathrooms
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
-                  name="bathrooms"
-                  id="bathrooms"
-                  type="number"
-                  placeholder="Bathrooms"
-                  required
-                />
-              </div>
+            <div className="space-y-1 text-sm">
+              <label htmlFor="bedrooms" className="block text-gray-600">
+                Bedrooms
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
+                name="bedrooms"
+                id="bedrooms"
+                type="number"
+                placeholder="Bedrooms"
+                required
+              />
+            </div>
+
+            <div className="space-y-1 text-sm">
+              <label htmlFor="bathrooms" className="block text-gray-600">
+                Bathrooms
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
+                name="bathrooms"
+                id="bathrooms"
+                type="number"
+                placeholder="Bathrooms"
+                required
+              />
             </div>
 
             <div className="space-y-1 text-sm">
               <label htmlFor="description" className="block text-gray-600">
                 Description
               </label>
-
               <textarea
-                id="description"
-                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-[#2A325A] focus:outline-[#1B1F3B] "
+                className="w-full px-4 py-3 text-gray-800 border border-[#2A325A] focus:outline-[#1B1F3B] rounded-md "
                 name="description"
+                id="description"
+                placeholder="Description"
+                required
               ></textarea>
             </div>
           </div>

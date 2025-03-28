@@ -61,7 +61,7 @@ const Navbar = () => {
   const fetchSearchResults = async query => {
     try {
       const response = await fetch(
-        `http://localhost:5050/search?query=${query}`
+        `${import.meta.env.VITE_API_URL}/search?query=${query}`
       );
       const data = await response.json();
       setSearchResults(data);
@@ -71,7 +71,7 @@ const Navbar = () => {
     }
   };
   const handleSelectItem = () => {
-       setSearchTerm('');
+    setSearchTerm('');
     setShowDropdown(false);
   };
   return (
@@ -126,7 +126,7 @@ const Navbar = () => {
               {showDropdown && searchResults.length > 0 && (
                 <ul className="absolute w-full bg-white border border-gray-300 mt-1 rounded-lg shadow-lg max-h-60 overflow-y-auto">
                   {searchResults.map((item, index) => (
-                    <li key={index} className='shadow-lg'>
+                    <li key={index} className="shadow-lg">
                       <Link
                         to={`/room/${item?._id}`}
                         onClick={() => handleSelectItem()}

@@ -21,7 +21,7 @@ const RoomDataRow = ({
             <div className="block relative">
               <img
                 alt="profile"
-                src={room?.image}
+                src={room?.image[0]}
                 className="mx-auto object-cover rounded h-14 w-20 "
               />
             </div>

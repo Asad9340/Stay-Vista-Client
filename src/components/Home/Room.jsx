@@ -6,7 +6,7 @@ const Room = ({ room }) => {
       <Link className="hover:scale-105 transition" to={`/room/${room?._id}`}>
         <div className="relative">
           <img
-            src={room?.image}
+            src={room?.image[0]}
             alt="Room"
             className="h-[300px] md:h-[300px] w-full md:w-[400px] rounded-t-md"
           />

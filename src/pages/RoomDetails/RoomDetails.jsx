@@ -18,8 +18,8 @@ import {
   FaParking,
   FaSwimmingPool,
   FaConciergeBell,
-  FaMapMarkerAlt,
 } from 'react-icons/fa';
+import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -52,20 +52,20 @@ const RoomDetails = () => {
               />
             </div>
 
-            <div className="relative w-full md:h-[90vh] overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
+            <ImageCarousel imgCollection={room.image} title={room.title} />
+            {/* <div className="relative w-full md:h-[90vh] overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
               <img
                 className="object-cover w-full h-full"
                 src={room?.image || '/default-room.jpg'}
                 alt="Room"
               />
-              {/* Location Tag on Image */}
               <div className="absolute bottom-4 left-4 bg-white bg-opacity-80 rounded-lg px-4 py-2 shadow-md flex items-center gap-2 text-gray-700">
                 <FaMapMarkerAlt className="text-red-500" />
                 <span className="text-sm font-semibold">
                   {room?.location || 'Beautiful Destination'}
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Room Info Section */}

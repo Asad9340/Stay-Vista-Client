@@ -17,7 +17,7 @@ const BookingDataRow = ({
             <div className="block relative">
               <img
                 alt="profile"
-                src={booking?.image}
+                src={booking?.image[0]}
                 className="mx-auto object-cover rounded h-10 w-15 "
               />
             </div>
