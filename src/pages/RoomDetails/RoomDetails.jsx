@@ -32,7 +32,16 @@ const RoomDetails = () => {
       return data;
     },
   });
-
+  const {
+    data: reviews = [],
+    isLoading: reviewsLoading,
+  } = useQuery({
+    queryKey: ['reviews', id],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`/review/${id}`);
+      return data;
+    },
+  });
   if (isLoading) return <LoadingSpinner />;
 
   return (
@@ -164,6 +173,40 @@ const RoomDetails = () => {
               for exploring the local culture and nightlife.
             </p>
           </div>
+        </div>
+      )}
+      {reviewsLoading ? (
+        <LoadingSpinner />
+      ) : reviews.length === 0 ? (
+        <div className="max-w-7xl mx-auto py-10 text-center text-gray-500">
+          <p className="text-lg font-medium">No reviews yet.</p>
+          <p className="text-sm mt-2">
+            Be the first to leave a review for this room.
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-4 grid grid-cols-3 max-w-7xl mx-auto my-4 md:my-8">
+          {reviews.map((review, index) => (
+            <div key={index} className="p-4   border-2 rounded shadow-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <img
+                  src={review.user?.photo}
+                  alt={review.user?.name}
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-medium text-2xl">{review.user?.name}</p>
+                  <p className="text-sm text-gray-500">
+                    {new Date(review.date).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+              <p className="text-sm text-yellow-500">
+                Rating: {review.rating} ⭐
+              </p>
+              <p className="mt-1">Description: {review.review}</p>
+            </div>
+          ))}
         </div>
       )}
     </Container>

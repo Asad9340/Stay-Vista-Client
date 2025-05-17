@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Swal from 'sweetalert2';
 import Featured from '../Featured/Featured';
 import SupportService from '../../components/SupportService/SupportService';
+import ReviewSection from '../../components/ReviewSection/ReviewSection';
 const Home = () => {
   useEffect(() => {
     Swal.fire({
@@ -21,6 +22,7 @@ const Home = () => {
       </Helmet>
       <Hero />
       <Featured />
+      <ReviewSection/>
       <SupportService />
     </div>
   );

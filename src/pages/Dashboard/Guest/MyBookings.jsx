@@ -53,14 +53,29 @@ const MyBookings = () => {
       }
     closeModal();
   };
-  const handleAddReview = async id => {
-      try {
-        console.log('test',id)
-      } catch (err) {
-        toast.error(err.message);
+  const handleAddReview = async (id, { review, rating }) => {
+    try {
+      const res = await axiosSecure.post('/review', {
+        id,
+        review: review,
+        rating,
+        userEmail: user.email,
+        userName: user.displayName,
+        photoURL: user.photoURL,
+      });
+
+      if (res.data?.insertedId ) {
+        toast.success('Review submitted successfully!');
+      } else {
+        toast.error(res.data?.message || 'Failed to submit review');
       }
-      setIsReviewOpen();
+    } catch (err) {
+      console.error('Review submit error:', err);
+      const message = err?.response?.data?.message || 'Error submitting review';
+      toast.error(message);
+    }
   };
+
   if (isLoading) return <LoadingSpinner />;
   return (
     <>
