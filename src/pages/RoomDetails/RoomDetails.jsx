@@ -185,7 +185,7 @@ const RoomDetails = () => {
           </p>
         </div>
       ) : (
-        <div className="space-y-4 grid grid-cols-3 max-w-7xl mx-auto my-4 md:my-8">
+        <div className="space-y-4 grid grid-cols-3 max-w-7xl mx-auto my-4 md:my-8 gap-5">
           {reviews.map((review, index) => (
             <div key={index} className="p-4   border-2 rounded shadow-lg">
               <div className="flex items-center gap-2 mb-2">

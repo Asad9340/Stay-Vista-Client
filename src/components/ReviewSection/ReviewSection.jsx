@@ -48,7 +48,7 @@ function ReviewSection() {
             No reviews available.
           </div>
         ) : (
-          allReviews.map((review, index) => (
+          allReviews?.map((review, index) => (
             <SwiperSlide key={index}>
               <div className="bg-white shadow-md rounded-lg p-6 h-full flex flex-col justify-between">
                 <div className="mb-4 flex items-center gap-4">
