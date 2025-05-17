@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import DeleteModal from '../../../Modal/DeleteModal';
+import ReviewModal from '../../../Modal/ReviewModal';
 
 const BookingDataRow = ({
   booking,
@@ -8,6 +9,11 @@ const BookingDataRow = ({
   isOpen,
   setIsOpen,
   handleDelete,
+
+  closeReviewModal,
+  isReviewOpen,
+  setIsReviewOpen,
+  handleAddReview,
 }) => {
   return (
     <tr>
@@ -57,6 +63,24 @@ const BookingDataRow = ({
         <p className="text-gray-900 whitespace-no-wrap">
           {format(new Date(booking?.to), 'P')}
         </p>
+      </td>
+      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <button
+          onClick={() => setIsReviewOpen(true)}
+          className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+        >
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+          ></span>
+          <span className="relative">Review</span>
+        </button>
+        <ReviewModal
+          closeReviewModal={closeReviewModal}
+          isReviewOpen={isReviewOpen}
+          id={booking?.roomId}
+          handleAddReview={handleAddReview}
+        />
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button

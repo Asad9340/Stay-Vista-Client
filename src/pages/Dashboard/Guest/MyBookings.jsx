@@ -11,6 +11,7 @@ const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
   const {
     data: myBooking = [],
     isLoading,
@@ -24,6 +25,9 @@ const MyBookings = () => {
   });
   const closeModal = () => {
     setIsOpen(false);
+  };
+  const closeReviewModal = () => {
+    setIsReviewOpen(false);
   };
 
   //   delete
@@ -48,6 +52,14 @@ const MyBookings = () => {
         toast.error(err.message);
       }
     closeModal();
+  };
+  const handleAddReview = async id => {
+      try {
+        console.log('test',id)
+      } catch (err) {
+        toast.error(err.message);
+      }
+      setIsReviewOpen();
   };
   if (isLoading) return <LoadingSpinner />;
   return (
@@ -98,6 +110,12 @@ const MyBookings = () => {
                         scope="col"
                         className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                       >
+                        Review
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
                         Action
                       </th>
                     </tr>
@@ -113,6 +131,11 @@ const MyBookings = () => {
                         isOpen={isOpen}
                         setIsOpen={setIsOpen}
                         handleDelete={handleDelete}
+
+                        closeReviewModal={closeReviewModal}
+                        isReviewOpen={isReviewOpen}
+                        setIsReviewOpen={setIsReviewOpen}
+                        handleAddReview={handleAddReview}
                       />
                     ))}
                   </tbody>
