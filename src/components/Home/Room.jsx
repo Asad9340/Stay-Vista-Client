@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { TbCoinTakaFilled } from 'react-icons/tb';
-const Room = ({ room }) => {
+const Room = ({ room, aosEffect }) => {
   return (
-    <div className="flex flex-col justify-between gap-2 md:gap-3  shadow-lg rounded-md px-3 py-3 font-fontPrimary">
+    <div
+      className="flex flex-col justify-between gap-2 md:gap-3  shadow-xl rounded-md px-3 py-3 font-fontPrimary border"
+      data-aos={aosEffect}
+    >
       <Link className="hover:scale-105 transition" to={`/room/${room?._id}`}>
         <div className="relative">
           <img
@@ -20,7 +23,7 @@ const Room = ({ room }) => {
       </Link>
       <div>
         <div className="p-3 flex flex-col  space-y-2">
-          <h2 className="text-lg font-semibold">
+          <h2 className="text-xl font-semibold">
             Category Name: {room.category}
           </h2>{' '}
           <hr className="border border-black" />

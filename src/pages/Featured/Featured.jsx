@@ -39,19 +39,25 @@ const Featured = () => {
 
   return (
     <>
-      <div className='mt-10'>
+      <div className="mt-10">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold lg:font-extrabold text-center">
-          Featured Roomsfirebase --version
+          Featured Rooms
         </h2>
         <p className="textarea-md md:text-lg text-center max-w-4xl mx-auto text-gray-700">
           Discover our featured rooms: where comfort meets style in every
-          detail. Experience luxury and relaxation like never before with
-          Stay Vista curated selection of premium accommodations.
+          detail. Experience luxury and relaxation like never before with Stay
+          Vista curated selection of premium accommodations.
         </p>
       </div>
       <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {rooms && rooms.length > 0 ? (
-          rooms.map(room => <Room key={room._id} room={room} />)
+          rooms.map((room, index) => (
+            <Room
+              key={room._id}
+              room={room}
+              aosEffect={index % 2 === 0 ? 'fade-up' : 'fade-down'}
+            />
+          ))
         ) : (
           <p className="text-center text-gray-500">No rooms available</p>
         )}

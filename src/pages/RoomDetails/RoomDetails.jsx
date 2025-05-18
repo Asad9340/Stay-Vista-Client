@@ -20,28 +20,33 @@ import {
   FaConciergeBell,
 } from 'react-icons/fa';
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
+import { useState } from 'react';
 
 const RoomDetails = () => {
   const { id } = useParams();
   const axiosCommon = useAxiosCommon();
+  const [showMap, setShowMap] = useState(true);
 
-  const { data: room = {}, isLoading,refetch } = useQuery({
+  const {
+    data: room = {},
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ['room', id],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/room/${id}`);
       return data;
     },
   });
-  const {
-    data: reviews = [],
-    isLoading: reviewsLoading,
-  } = useQuery({
+
+  const { data: reviews = [], isLoading: reviewsLoading } = useQuery({
     queryKey: ['reviews', id],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/review/${id}`);
       return data;
     },
   });
+
   if (isLoading) return <LoadingSpinner />;
 
   return (
@@ -62,19 +67,6 @@ const RoomDetails = () => {
             </div>
 
             <ImageCarousel imgCollection={room.image} title={room.title} />
-            {/* <div className="relative w-full md:h-[90vh] overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
-              <img
-                className="object-cover w-full h-full"
-                src={room?.image || '/default-room.jpg'}
-                alt="Room"
-              />
-              <div className="absolute bottom-4 left-4 bg-white bg-opacity-80 rounded-lg px-4 py-2 shadow-md flex items-center gap-2 text-gray-700">
-                <FaMapMarkerAlt className="text-red-500" />
-                <span className="text-sm font-semibold">
-                  {room?.location || 'Beautiful Destination'}
-                </span>
-              </div>
-            </div> */}
           </div>
 
           {/* Room Info Section */}
@@ -172,9 +164,35 @@ const RoomDetails = () => {
               popular attractions, shopping centers, and restaurants. Perfect
               for exploring the local culture and nightlife.
             </p>
+
+            {/* Map Toggle Button */}
+            <button
+              onClick={() => setShowMap(prev => !prev)}
+              className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
+            >
+              {showMap ? 'Hide Map' : 'Show Map'}
+            </button>
+
+            {/* Map Display */}
+            {showMap && room?.location && (
+              <div className="mt-6 w-full h-[400px]">
+                <iframe
+                  title="Location Map"
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  allowFullScreen
+                  className="rounded-lg border shadow"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(
+                    room.location
+                  )}&output=embed`}
+                ></iframe>
+              </div>
+            )}
           </div>
         </div>
       )}
+
       {reviewsLoading ? (
         <LoadingSpinner />
       ) : reviews.length === 0 ? (
@@ -187,7 +205,7 @@ const RoomDetails = () => {
       ) : (
         <div className="space-y-4 grid grid-cols-3 max-w-7xl mx-auto my-4 md:my-8 gap-5">
           {reviews.map((review, index) => (
-            <div key={index} className="p-4   border-2 rounded shadow-lg">
+            <div key={index} className="p-4 border-2 rounded shadow-lg">
               <div className="flex items-center gap-2 mb-2">
                 <img
                   src={review.user?.photo}

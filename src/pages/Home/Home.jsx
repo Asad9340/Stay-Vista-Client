@@ -5,6 +5,11 @@ import Swal from 'sweetalert2';
 import Featured from '../Featured/Featured';
 import SupportService from '../../components/SupportService/SupportService';
 import ReviewSection from './../../components/ReviewSection/ReviewSection';
+import HowItWorks from '../../components/HowItWorks/HowItWorks';
+import WhyChooseUs from '../../components/WhyChooseUs/WhyChooseUs';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+
 const Home = () => {
   useEffect(() => {
     Swal.fire({
@@ -13,6 +18,14 @@ const Home = () => {
       imageHeight: 300,
       imageWidth: 400,
       imageAlt: 'A Special Offer Image',
+    });
+  }, []);
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+      delay: 100,
     });
   }, []);
   return (
@@ -24,6 +37,8 @@ const Home = () => {
       <Featured />
       <ReviewSection/>
       <SupportService />
+      <HowItWorks />
+      <WhyChooseUs/>
     </div>
   );
 };
