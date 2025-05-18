@@ -92,7 +92,7 @@ const Navbar = () => {
             <div className="hidden md:block">
               <ul className="flex justify-between gap-4 text-lg">
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
-                  <Link>Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li className="border-b-2 border-white hover:border-gray-400 py-1 px-3">
                   <Link to="/category">Category</Link>
