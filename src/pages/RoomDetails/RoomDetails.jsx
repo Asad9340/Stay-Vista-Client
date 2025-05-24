@@ -220,7 +220,10 @@ const RoomDetails = () => {
                 </div>
               </div>
               <p className="text-sm text-yellow-500">
-                Rating: {review.rating} ⭐
+                Rating: {review.rating}{' '}
+                {Array.from({ length: review.rating }, (_, i) => (
+                  <span key={i}>⭐</span>
+                ))}
               </p>
               <p className="mt-1">Description: {review.review}</p>
             </div>

@@ -50,7 +50,7 @@ function ReviewSection() {
         ) : (
           allReviews?.map((review, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white shadow-md rounded-lg p-6 h-full flex flex-col justify-between">
+              <div className="bg-white border shadow-md rounded-lg p-6 h-full flex flex-col justify-between">
                 <div className="mb-4 flex items-center gap-4">
                   <img
                     src={
@@ -69,8 +69,11 @@ function ReviewSection() {
                     </p>
                   </div>
                 </div>
-                <div className="text-yellow-500 mb-2">
-                  Rating: {review.rating} ⭐
+                <div className="text-sm text-yellow-500 mb-2">
+                  Rating: {review.rating}{' '}
+                  {Array.from({ length: review.rating }, (_, i) => (
+                    <span key={i}>⭐</span>
+                  ))}
                 </div>
                 <p className="text-gray-700 italic">{review.review}</p>
               </div>
