@@ -136,8 +136,7 @@ const MyBookings = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* Table Row Data */}
-                    {myBooking.map(booking => (
+                    {myBooking?.map(booking => (
                       <BookingDataRow
                         key={booking._id}
                         booking={booking}

@@ -1,9 +1,9 @@
 import {
   Dialog,
-  Transition,
   TransitionChild,
   DialogPanel,
   DialogTitle,
+  Transition,
 } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';

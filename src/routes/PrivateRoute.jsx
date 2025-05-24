@@ -9,9 +9,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) return <LoadingSpinner />;
   if (user) return children;
-  setTimeout(() => {
     return <Navigate to="/login" state={location.pathname} replace="true" />;
-  }, 5000);
 };
 
 PrivateRoute.propTypes = {

@@ -2,10 +2,10 @@ import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import LoadingSpinner from '../../../components/Shared/LoadingSpinner';
-import BookingDataRow from '../../../components/Dashboard/DataTable/BookingDataRow/BookingDataRow';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
+import BookingDataRow2 from '../../../components/Dashboard/DataTable/BookingDataRow/BookingDataRow2';
 
 const ManageBookings = () => {
   const axiosSecure = useAxiosSecure();
@@ -103,9 +103,8 @@ const ManageBookings = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* Table row data */}
                     {manageBooking.map(booking => (
-                      <BookingDataRow
+                      <BookingDataRow2
                         key={booking._id}
                         booking={booking}
                         refetch={refetch}
