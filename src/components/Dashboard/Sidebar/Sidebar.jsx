@@ -33,7 +33,7 @@ const Sidebar = () => {
             <Link to="/">
               <img
                 // className='hidden md:block'
-                src="https://i.postimg.cc/13rFBgXg/logo-removebg-preview-1.png"
+                src="https://i.postimg.cc/T1ZhY6xd/logo-removebg-preview-1.png"
                 alt="logo"
                 width="100"
                 height="100"
@@ -62,7 +62,7 @@ const Sidebar = () => {
               <Link to="/">
                 <img
                   // className='hidden md:block'
-                  src="https://i.postimg.cc/13rFBgXg/logo-removebg-preview-1.png"
+                  src="https://i.postimg.cc/T1ZhY6xd/logo-removebg-preview-1.png"
                   alt="logo"
                   width="200"
                   height="100"
