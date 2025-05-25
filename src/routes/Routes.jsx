@@ -25,6 +25,7 @@ import RefundPolicy from '../pages/RefundPolicy/RefundPolicy';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import TermsOfService from '../pages/TermsOfService/TermsOfService';
 import FAQ from '../pages/FAQ/FAQ';
+import VerifyEmail from '../components/VerifyEmail/VerifyEmail';
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
         element: <Blog />,
       },
       {
+        path: '/verify-email',
+        element: <VerifyEmail />,
+      },
+      {
         path: '/refund-policy',
         element: <RefundPolicy />,
       },
@@ -66,11 +71,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/terms-of-service',
-        element: <TermsOfService/>
+        element: <TermsOfService />,
       },
       {
         path: '/faq',
-        element: <FAQ/>
+        element: <FAQ />,
       },
       {
         path: '/room/:id',

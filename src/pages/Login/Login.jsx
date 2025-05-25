@@ -33,15 +33,22 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     try {
-      await signIn(email, password);
-      navigate(from);
-      toast.success('LogIn Successfully');
-    } catch (e) {
-      toast.error('Email or password does not match');
+      const result = await signIn(email, password);
+      if (result?.user?.emailVerified) {
+        toast.success('LogIn Successfully');
+        navigate(from);
+        window.location.reload();
+      }
+    } catch (error) {
+      if (error.message !== 'Email not verified') {
+        toast.error('Email or password does not match');
+      }
       setLoading(false);
     }
   };
+
   const handleForgatePassword = () => {
     setForgatePass(!forgetPass);
   };

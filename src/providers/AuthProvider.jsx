@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -13,6 +14,7 @@ import {
 } from 'firebase/auth';
 import { app } from '../firebase/firebase.config';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -23,13 +25,29 @@ const AuthProvider = ({ children }) => {
 
   const createUser = (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      result => {
+        return sendEmailVerification(result.user).then(() => {
+          toast.success('Verification email sent. Please check your inbox.');
+          return result;
+        });
+      }
+    );
   };
+
 
   const signIn = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password).then(result => {
+      if (!result.user.emailVerified) {
+        sendEmailVerification(result.user);
+        toast.success('Verification email sent. Please check your inbox.');
+        setLoading(false);
+      }
+      return result;
+    });
   };
+
 
   const signInWithGoogle = () => {
     setLoading(true);
@@ -79,17 +97,23 @@ const AuthProvider = ({ children }) => {
   // onAuthStateChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser);
       if (currentUser) {
-        getToken(currentUser.email);
-        saveUser(currentUser);
+        if (currentUser.emailVerified) {
+          setUser(currentUser);
+          getToken(currentUser.email);
+          saveUser(currentUser);
+        } else {
+          setUser(null);
+        }
+      } else {
+        setUser(null);
       }
       setLoading(false);
     });
-    return () => {
-      return unsubscribe();
-    };
+
+    return () => unsubscribe();
   }, []);
+
 
   const authInfo = {
     user,
