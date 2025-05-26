@@ -9,6 +9,7 @@ import HowItWorks from '../../components/HowItWorks/HowItWorks';
 import WhyChooseUs from '../../components/WhyChooseUs/WhyChooseUs';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import KnowDevelopers from '../../components/KnowDevelopers/KnowDevelopers';
 
 const Home = () => {
   useEffect(() => {
@@ -38,7 +39,8 @@ const Home = () => {
       <ReviewSection/>
       <SupportService />
       <HowItWorks />
-      <WhyChooseUs/>
+      <WhyChooseUs />
+      <KnowDevelopers/>
     </div>
   );
 };
