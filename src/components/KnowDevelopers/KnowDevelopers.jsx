@@ -20,7 +20,7 @@ const KnowDevelopers = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
+    <div className=" bg-gray-100 py-10 px-4">
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold lg:font-extrabold text-center mb-4 md:mb-8">
         Meet Our Developers
       </h2>
